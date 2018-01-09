@@ -1,0 +1,7 @@
+Manifest-Version: 1.0
+OpenIDE-Module: com.gdev.timetable
+OpenIDE-Module-Install: com/gdev/timetable/Installer.class
+OpenIDE-Module-Layer: com/gdev/timetable/layer.xml
+OpenIDE-Module-Localizing-Bundle: com/gdev/timetable/Bundle.properties
+OpenIDE-Module-Specification-Version: 1.0
+

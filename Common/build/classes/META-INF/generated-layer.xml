@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE filesystem PUBLIC "-//NetBeans//DTD Filesystem 1.2//EN"
+                            "http://www.netbeans.org/dtds/filesystem-1_2.dtd">
+<filesystem>
+    <folder name="xml">
+        <folder name="entities">
+            <folder name="org_mac_common_other">
+                <file name="ReportPanel" url="nbres:/org/netbeans/modules/settings/resources/properties-1_0.dtd">
+                    <!--com.gdev.common.other.ReportPanelTopComponent-->
+                    <attr name="hint.originalPublicID" stringvalue="-//org.mac.common.other//ReportPanel//EN"/>
+                </file>
+            </folder>
+        </folder>
+        <folder name="memory">
+            <folder name="com">
+                <folder name="gdev">
+                    <folder name="common">
+                        <folder name="other">
+                            <file name="ReportPanelTopComponent">
+                                <!--com.gdev.common.other.ReportPanelTopComponent-->
+                                <attr name="settings.providerPath" stringvalue="xml/lookups//org_mac_common_other/ReportPanel.instance"/>
+                            </file>
+                        </folder>
+                    </folder>
+                </folder>
+            </folder>
+        </folder>
+        <folder name="lookups">
+            <folder name="org_mac_common_other">
+                <file name="ReportPanel.instance">
+                    <!--com.gdev.common.other.ReportPanelTopComponent-->
+                    <attr
+                        methodvalue="org.netbeans.api.settings.Factory.create" name="instanceCreate"/>
+                    <attr
+                        methodvalue="org.netbeans.api.settings.Factory.properties" name="settings.convertor"/>
+                    <attr name="settings.instanceClass" stringvalue="com.gdev.common.other.ReportPanelTopComponent"/>
+                    <attr name="settings.instanceOf" stringvalue="com.gdev.common.other.ReportPanelTopComponent"/>
+                    <attr boolvalue="true" name="xmlproperties.preventStoring"/>
+                </file>
+            </folder>
+        </folder>
+    </folder>
+    <folder name="Windows2">
+        <folder name="Components">
+            <file name="ReportPanelTopComponent.settings">
+                <!--com.gdev.common.other.ReportPanelTopComponent--><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE settings PUBLIC "-//NetBeans//DTD Session settings 1.0//EN" "http://www.netbeans.org/dtds/sessionsettings-1_0.dtd">
+<settings version="1.0">
+  <instance class="com.gdev.common.other.ReportPanelTopComponent"/>
+</settings>
+]]></file>
+        </folder>
+        <folder name="Modes">
+            <folder name="editor">
+                <file name="ReportPanelTopComponent.wstcref">
+                    <!--com.gdev.common.other.ReportPanelTopComponent--><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tc-ref PUBLIC "-//NetBeans//DTD Top Component in Mode Properties 2.0//EN" "http://www.netbeans.org/dtds/tc-ref2_0.dtd">
+<tc-ref version="2.0">
+  <tc-id id="ReportPanelTopComponent"/>
+  <state opened="false"/>
+</tc-ref>
+]]></file>
+            </folder>
+        </folder>
+    </folder>
+    <folder name="Actions">
+        <folder name="Window">
+            <file name="org-mac-common-other-ReportPanelTopComponent.instance">
+                <!--com.gdev.common.other.ReportPanelTopComponent-->
+                <attr
+                    methodvalue="org.openide.windows.TopComponent.openAction" name="instanceCreate"/>
+                <attr name="component" newvalue="com.gdev.common.other.ReportPanelTopComponent"/>
+                <attr name="preferredID" stringvalue="ReportPanelTopComponent"/>
+                <attr
+                    bundlevalue="com.gdev.common.other.Bundle#CTL_ReportPanelAction" name="displayName"/>
+            </file>
+        </folder>
+    </folder>
+</filesystem>

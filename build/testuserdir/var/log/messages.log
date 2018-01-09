@@ -1,0 +1,176 @@
+-------------------------------------------------------------------------------
+>Log Session: Monday, January 8, 2018 8:22:15 PM IST
+>System Info: 
+  Product Version         = AM Time Table Manager
+  Operating System        = Windows 8.1 version 6.3 running on amd64
+  Java; VM; Vendor        = 1.8.0_151; Java HotSpot(TM) 64-Bit Server VM 25.151-b12; Oracle Corporation
+  Runtime                 = Java(TM) SE Runtime Environment 1.8.0_151-b12
+  Java Home               = C:\Program Files\Java\jdk1.8.0_151\jre
+  System Locale; Encoding = en_US (am_time_table); Cp1252
+  Home Directory          = C:\Users\Gurwinder Singh
+  Current Directory       = D:\workspace\AM_Time_Table
+  User Directory          = D:\workspace\AM_Time_Table\build\testuserdir
+  Cache Directory         = D:\workspace\AM_Time_Table\build\testuserdir\var\cache
+  Installation            = D:\workspace\AM_Time_Table\build\cluster
+                            C:\Program Files\NetBeans 8.0\platform
+                            C:\Program Files\NetBeans 8.0\platform
+  Boot & Ext. Classpath   = C:\Program Files\Java\jdk1.8.0_151\jre\lib\resources.jar;C:\Program Files\Java\jdk1.8.0_151\jre\lib\rt.jar;C:\Program Files\Java\jdk1.8.0_151\jre\lib\sunrsasign.jar;C:\Program Files\Java\jdk1.8.0_151\jre\lib\jsse.jar;C:\Program Files\Java\jdk1.8.0_151\jre\lib\jce.jar;C:\Program Files\Java\jdk1.8.0_151\jre\lib\charsets.jar;C:\Program Files\Java\jdk1.8.0_151\jre\lib\jfr.jar;C:\Program Files\Java\jdk1.8.0_151\jre\classes;C:\Program Files\Java\jdk1.8.0_151\jre\lib\ext\access-bridge-64.jar;C:\Program Files\Java\jdk1.8.0_151\jre\lib\ext\cldrdata.jar;C:\Program Files\Java\jdk1.8.0_151\jre\lib\ext\dnsns.jar;C:\Program Files\Java\jdk1.8.0_151\jre\lib\ext\jaccess.jar;C:\Program Files\Java\jdk1.8.0_151\jre\lib\ext\jfxrt.jar;C:\Program Files\Java\jdk1.8.0_151\jre\lib\ext\localedata.jar;C:\Program Files\Java\jdk1.8.0_151\jre\lib\ext\nashorn.jar;C:\Program Files\Java\jdk1.8.0_151\jre\lib\ext\sunec.jar;C:\Program Files\Java\jdk1.8.0_151\jre\lib\ext\sunjce_provider.jar;C:\Program Files\Java\jdk1.8.0_151\jre\lib\ext\sunmscapi.jar;C:\Program Files\Java\jdk1.8.0_151\jre\lib\ext\sunpkcs11.jar;C:\Program Files\Java\jdk1.8.0_151\jre\lib\ext\zipfs.jar
+  Application Classpath   = C:\Program Files\NetBeans 8.0\platform\lib\boot.jar;C:\Program Files\NetBeans 8.0\platform\lib\org-openide-modules.jar;C:\Program Files\NetBeans 8.0\platform\lib\org-openide-util-lookup.jar;C:\Program Files\NetBeans 8.0\platform\lib\org-openide-util.jar;C:\Program Files\NetBeans 8.0\platform\lib\locale\boot_ja.jar;C:\Program Files\NetBeans 8.0\platform\lib\locale\boot_pt_BR.jar;C:\Program Files\NetBeans 8.0\platform\lib\locale\boot_ru.jar;C:\Program Files\NetBeans 8.0\platform\lib\locale\boot_zh_CN.jar;C:\Program Files\NetBeans 8.0\platform\lib\locale\org-openide-modules_ja.jar;C:\Program Files\NetBeans 8.0\platform\lib\locale\org-openide-modules_pt_BR.jar;C:\Program Files\NetBeans 8.0\platform\lib\locale\org-openide-modules_ru.jar;C:\Program Files\NetBeans 8.0\platform\lib\locale\org-openide-modules_zh_CN.jar;C:\Program Files\NetBeans 8.0\platform\lib\locale\org-openide-util-lookup_ja.jar;C:\Program Files\NetBeans 8.0\platform\lib\locale\org-openide-util-lookup_pt_BR.jar;C:\Program Files\NetBeans 8.0\platform\lib\locale\org-openide-util-lookup_ru.jar;C:\Program Files\NetBeans 8.0\platform\lib\locale\org-openide-util-lookup_zh_CN.jar;C:\Program Files\NetBeans 8.0\platform\lib\locale\org-openide-util_ja.jar;C:\Program Files\NetBeans 8.0\platform\lib\locale\org-openide-util_pt_BR.jar;C:\Program Files\NetBeans 8.0\platform\lib\locale\org-openide-util_ru.jar;C:\Program Files\NetBeans 8.0\platform\lib\locale\org-openide-util_zh_CN.jar;C:\Program Files\Java\jdk1.8.0_151\lib\dt.jar;C:\Program Files\Java\jdk1.8.0_151\lib\tools.jar
+  Startup Classpath       = C:\Program Files\NetBeans 8.0\platform\core\core.jar;C:\Program Files\NetBeans 8.0\platform\core\org-openide-filesystems.jar;C:\Program Files\NetBeans 8.0\platform\core\locale\core_ja.jar;C:\Program Files\NetBeans 8.0\platform\core\locale\core_pt_BR.jar;C:\Program Files\NetBeans 8.0\platform\core\locale\core_ru.jar;C:\Program Files\NetBeans 8.0\platform\core\locale\core_zh_CN.jar;C:\Program Files\NetBeans 8.0\platform\core\locale\org-openide-filesystems_ja.jar;C:\Program Files\NetBeans 8.0\platform\core\locale\org-openide-filesystems_pt_BR.jar;C:\Program Files\NetBeans 8.0\platform\core\locale\org-openide-filesystems_ru.jar;C:\Program Files\NetBeans 8.0\platform\core\locale\org-openide-filesystems_zh_CN.jar;D:\workspace\AM_Time_Table\build\cluster\core\locale\core_am_time_table.jar
+-------------------------------------------------------------------------------
+INFO [org.netbeans.core.startup.NbEvents]: Turning on modules:
+	org.openide.util.lookup [8.24.1 201403101706]
+	org.openide.util [8.37.1 201403101706]
+	org.openide.modules [7.42.1 201403101706]
+	org.netbeans.api.annotations.common/1 [1.23.1 201403101706]
+	org.openide.filesystems [8.10.1 201403101706]
+	org.openide.awt [7.61.1 201403101706]
+	org.netbeans.api.progress/1 [1.37.1 201403101706]
+	org.openide.dialogs [7.36.1 201403101706]
+	org.openide.nodes [7.38.1 201403101706]
+	org.openide.windows [6.70.1 201403101706]
+	org.netbeans.modules.editor.mimelookup/1 [1.35.1 201403101706]
+	org.openide.text [6.61.1 201403101706]
+	org.netbeans.swing.tabcontrol [1.50.1 201403101706]
+	org.netbeans.swing.outline [1.29.1 201403101706]
+	org.openide.explorer [6.56.1 201403101706]
+	org.openide.actions [6.34.1 201403101706]
+	org.netbeans.modules.queries/1 [1.38.1 201403101706]
+	org.openide.loaders [7.56.2 201403101706]
+	org.openide.io [1.44.1 201403101706]
+	org.netbeans.swing.plaf [1.36.1 201403101706]
+	org.netbeans.spi.quicksearch [1.22.1 201403101706]
+	org.netbeans.bootstrap/1 [2.67.1 201403101706]
+	org.netbeans.core.startup/1 [1.53.1 201403101706]
+	org.netbeans.modules.settings/1 [1.44.1 201403101706]
+	org.netbeans.modules.sampler [1.9.1 201403101706]
+	org.netbeans.modules.progress.ui [1.28.1 201403101706]
+	org.netbeans.modules.print [7.21.1 201403101706]
+	org.netbeans.modules.keyring [1.19.1 201403101706]
+	org.netbeans.core/2 [3.45.1 201403101706]
+	org.netbeans.modules.options.api/1 [1.39.1 201403101706]
+	org.netbeans.modules.options.keymap [1.30.1 201403101706]
+	org.netbeans.libs.jna/1 [1.35.1 201403101706]
+	org.netbeans.modules.masterfs/2 [2.46.1 201403101706]
+	org.netbeans.modules.masterfs.windows [1.11.1 201403101706]
+	org.netbeans.modules.masterfs.nio2 [1.11.1 201403101706]
+	org.netbeans.modules.keyring.fallback [1.3.1 201403101706]
+	org.netbeans.modules.keyring.impl [1.18.1 201403101706]
+	org.netbeans.modules.editor.mimelookup.impl/1 [1.26.1 201403101706]
+	org.netbeans.libs.osgi [1.17.1 201403101706]
+	org.netbeans.libs.jna.platform/1 [1.5.1 201403101706]
+	org.netbeans.libs.felix [2.11.1 201403101706]
+	org.netbeans.core.windows/2 [2.75.1 201403101706]
+	org.netbeans.core.ui/1 [1.40.1 201403101706]
+	org.netbeans.core.output2/1 [1.36.1 201403101706]
+	org.netbeans.core.network [1.4.1 201403101706]
+	org.netbeans.core.netigso [1.26.1 201403101706]
+	org.netbeans.core.nativeaccess/1 [1.26.1 201403101706]
+	org.netbeans.core.multitabs/1 [1.7.1.1 1 201403101706]
+	org.netbeans.core.io.ui/1 [1.25.1 201403101706]
+	com.gdev.timetable [1.0 180107]
+INFO [org.netbeans.core.network.proxy.NetworkProxyReloader]: System network proxy resolver: Windows
+INFO [org.netbeans.core.network.proxy.windows.WindowsNetworkProxy]: Windows system proxy resolver: auto detect
+INFO [org.netbeans.core.network.proxy.NetworkProxyReloader]: System network proxy reloading succeeded.
+INFO [org.netbeans.core.network.proxy.NetworkProxyReloader]: System network proxy - mode: direct
+INFO [org.netbeans.core.network.proxy.NetworkProxyReloader]: System network proxy: fell to default (correct if direct mode went before)
+java.lang.IllegalStateException: no splash screen available
+	at java.awt.SplashScreen.checkVisible(SplashScreen.java:197)
+	at java.awt.SplashScreen.update(SplashScreen.java:324)
+	at org.netbeans.core.startup.Splash$SplashPainter.repaint(Splash.java:399)
+	at org.netbeans.core.startup.Splash$SplashPainter$1.run(Splash.java:440)
+	at java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:311)
+	at java.awt.EventQueue.dispatchEventImpl(EventQueue.java:756)
+	at java.awt.EventQueue.access$500(EventQueue.java:97)
+	at java.awt.EventQueue$3.run(EventQueue.java:709)
+	at java.awt.EventQueue$3.run(EventQueue.java:703)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:80)
+	at java.awt.EventQueue.dispatchEvent(EventQueue.java:726)
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:201)
+	at java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:116)
+	at java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:109)
+	at java.awt.WaitDispatchSupport$2.run(WaitDispatchSupport.java:184)
+	at java.awt.WaitDispatchSupport$4.run(WaitDispatchSupport.java:229)
+	at java.awt.WaitDispatchSupport$4.run(WaitDispatchSupport.java:227)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.awt.WaitDispatchSupport.enter(WaitDispatchSupport.java:227)
+	at java.awt.Dialog.show(Dialog.java:1084)
+	at java.awt.Component.show(Component.java:1671)
+	at java.awt.Component.setVisible(Component.java:1623)
+	at java.awt.Window.setVisible(Window.java:1014)
+	at java.awt.Dialog.setVisible(Dialog.java:1005)
+	at com.gdev.timetable.Installer$1.run(Installer.java:28)
+	at java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:311)
+	at java.awt.EventQueue.dispatchEventImpl(EventQueue.java:756)
+	at java.awt.EventQueue.access$500(EventQueue.java:97)
+	at java.awt.EventQueue$3.run(EventQueue.java:709)
+	at java.awt.EventQueue$3.run(EventQueue.java:703)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:80)
+	at java.awt.EventQueue.dispatchEvent(EventQueue.java:726)
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:201)
+	at java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:116)
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:105)
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:93)
+	at java.awt.EventDispatchThread.run(EventDispatchThread.java:82)
+INFO [org.netbeans.ui.metrics.laf]: USG_LOOK_AND_FEEL
+Diagnostic information
+Input arguments:
+	-Dnetbeans.logger.console=true
+	-ea
+	-Xdebug
+	-Xrunjdwp:transport=dt_socket,suspend=y,server=n,address=widgetcast.reallusion.com:35710
+	-Djdk.home=C:\Program Files\Java\jdk1.8.0_151
+	-splash:D:\workspace\AM_Time_Table\build\testuserdir\var\cache\splash.png
+	-Dnetbeans.home=C:\Program Files\NetBeans 8.0\platform
+	-Dnetbeans.user=D:\workspace\AM_Time_Table\build\testuserdir
+	-Dnetbeans.default_userdir_root=
+	-XX:+HeapDumpOnOutOfMemoryError
+	-XX:HeapDumpPath=D:\workspace\AM_Time_Table\build\testuserdir\var\log\heapdump.hprof
+	-Dsun.awt.keepWorkingSetOnMinimize=true
+	-Dnetbeans.dirs=D:\workspace\AM_Time_Table\build\cluster;C:\Program Files\NetBeans 8.0\platform
+	exit
+Compiler: HotSpot 64-Bit Tiered Compilers
+Heap memory usage: initial 64.0MB maximum 894.5MB
+Non heap memory usage: initial 2.4MB maximum -1b
+Garbage collector: PS Scavenge (Collections=6 Total time spent=0s)
+Garbage collector: PS MarkSweep (Collections=1 Total time spent=0s)
+Classes: loaded=4208 total loaded=4208 unloaded 0
+INFO [org.netbeans.core.ui.warmup.DiagnosticTask]: Total memory 4,218,073,088
+INFO [null]: Total physical memory 4,218,073,088
+WARNING [org.openide.filesystems.Ordering]: Not all children in Menu/Window/ marked with the position attribute: [com-libManager-StartUpTopComponent.shadow], but some are: [org-netbeans-core-io-ui-IOWindowAction.shadow, SwitchToRecentDocumentAction.shadow, Web, Tools, Separator3.instance, ConfigureWindow, org-netbeans-core-windows-actions-ResetWindowsAction.shadow, Separator4.instance, CloseWindowAction.shadow, CloseAllDocumentsAction.shadow, CloseAllButThisAction.shadow, GroupsMenuAction.shadow, DocumentsAction.shadow]
+WARNING [org.netbeans.TopSecurityManager]: use of system property netbeans.user has been obsoleted in favor of InstalledFileLocator/Places at com.gdev.timetable.db.DbManager.<init>(DbManager.java:34)
+INFO [org.netbeans.modules.sampler.InternalSampler]: Slowness detector disabled - running in debug mode
+WARNING [org.netbeans.core.TimableEventQueue]: too much time in AWT thread null
+WARNING [org.openide.windows.WindowManager]: [Winsys] TopComponent com.gdev.timetable.StartUpTopComponent throws exception/error from its componentOpened() method.
+Please repair it!
+java.lang.NullPointerException
+	at javax.swing.ImageIcon.<init>(ImageIcon.java:217)
+	at com.gdev.timetable.StartUpTopComponent.componentOpened(StartUpTopComponent.java:80)
+[catch] at org.openide.windows.WindowManager.componentOpenNotify(WindowManager.java:307)
+	at org.netbeans.core.windows.WindowManagerImpl.notifyTopComponentOpened(WindowManagerImpl.java:1149)
+	at org.netbeans.core.windows.Central.addModeOpenedTopComponent(Central.java:798)
+	at org.netbeans.core.windows.ModeImpl.addOpenedTopComponent(ModeImpl.java:354)
+	at org.netbeans.core.windows.WindowManagerImpl.topComponentOpenAtTabPosition(WindowManagerImpl.java:1261)
+	at org.netbeans.core.windows.WindowManagerImpl.topComponentOpen(WindowManagerImpl.java:1226)
+	at org.openide.windows.TopComponent.open(TopComponent.java:497)
+	at org.openide.windows.TopComponent.open(TopComponent.java:477)
+	at com.gdev.timetable.Installer$1$1$1.run(Installer.java:39)
+	at java.awt.event.InvocationEvent.dispatch(InvocationEvent.java:311)
+	at java.awt.EventQueue.dispatchEventImpl(EventQueue.java:756)
+	at java.awt.EventQueue.access$500(EventQueue.java:97)
+	at java.awt.EventQueue$3.run(EventQueue.java:709)
+	at java.awt.EventQueue$3.run(EventQueue.java:703)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:80)
+	at java.awt.EventQueue.dispatchEvent(EventQueue.java:726)
+	at org.netbeans.core.TimableEventQueue.dispatchEvent(TimableEventQueue.java:159)
+	at java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:201)
+	at java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:116)
+	at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:105)
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)
+	at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:93)
+	at java.awt.EventDispatchThread.run(EventDispatchThread.java:82)
+WARNING [org.netbeans.TopSecurityManager]: use of system property netbeans.home has been obsoleted in favor of InstalledFileLocator/Places at org.netbeans.Clusters.relativeDirsWithHome(Clusters.java:137)

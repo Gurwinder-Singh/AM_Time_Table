@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE filesystem PUBLIC "-//NetBeans//DTD Filesystem 1.2//EN"
+                            "http://www.netbeans.org/dtds/filesystem-1_2.dtd">
+<filesystem>
+    <folder name="xml">
+        <folder name="entities">
+            <folder name="com_libManager">
+                <file name="BranchReport" url="nbres:/org/netbeans/modules/settings/resources/properties-1_0.dtd">
+                    <!--com.gdev.timetable.BranchReportTopComponent-->
+                    <attr name="hint.originalPublicID" stringvalue="-//com.libManager//BranchReport//EN"/>
+                </file>
+                <file name="DepartmentReport" url="nbres:/org/netbeans/modules/settings/resources/properties-1_0.dtd">
+                    <!--com.gdev.timetable.DepartmentReportTopComponent-->
+                    <attr name="hint.originalPublicID" stringvalue="-//com.libManager//DepartmentReport//EN"/>
+                </file>
+                <file name="StartUp" url="nbres:/org/netbeans/modules/settings/resources/properties-1_0.dtd">
+                    <!--com.gdev.timetable.StartUpTopComponent-->
+                    <attr name="hint.originalPublicID" stringvalue="-//com.libManager//StartUp//EN"/>
+                </file>
+            </folder>
+        </folder>
+        <folder name="memory">
+            <folder name="com">
+                <folder name="gdev">
+                    <folder name="timetable">
+                        <file name="BranchReportTopComponent">
+                            <!--com.gdev.timetable.BranchReportTopComponent-->
+                            <attr name="settings.providerPath" stringvalue="xml/lookups//com_libManager/BranchReport.instance"/>
+                        </file>
+                        <file name="DepartmentReportTopComponent">
+                            <!--com.gdev.timetable.DepartmentReportTopComponent-->
+                            <attr name="settings.providerPath" stringvalue="xml/lookups//com_libManager/DepartmentReport.instance"/>
+                        </file>
+                        <file name="StartUpTopComponent">
+                            <!--com.gdev.timetable.StartUpTopComponent-->
+                            <attr name="settings.providerPath" stringvalue="xml/lookups//com_libManager/StartUp.instance"/>
+                        </file>
+                    </folder>
+                </folder>
+            </folder>
+        </folder>
+        <folder name="lookups">
+            <folder name="com_libManager">
+                <file name="BranchReport.instance">
+                    <!--com.gdev.timetable.BranchReportTopComponent-->
+                    <attr
+                        methodvalue="org.netbeans.api.settings.Factory.create" name="instanceCreate"/>
+                    <attr
+                        methodvalue="org.netbeans.api.settings.Factory.properties" name="settings.convertor"/>
+                    <attr name="settings.instanceClass" stringvalue="com.gdev.timetable.BranchReportTopComponent"/>
+                    <attr name="settings.instanceOf" stringvalue="com.gdev.timetable.BranchReportTopComponent"/>
+                    <attr boolvalue="true" name="xmlproperties.preventStoring"/>
+                </file>
+                <file name="DepartmentReport.instance">
+                    <!--com.gdev.timetable.DepartmentReportTopComponent-->
+                    <attr
+                        methodvalue="org.netbeans.api.settings.Factory.create" name="instanceCreate"/>
+                    <attr
+                        methodvalue="org.netbeans.api.settings.Factory.properties" name="settings.convertor"/>
+                    <attr name="settings.instanceClass" stringvalue="com.gdev.timetable.DepartmentReportTopComponent"/>
+                    <attr name="settings.instanceOf" stringvalue="com.gdev.timetable.DepartmentReportTopComponent"/>
+                    <attr boolvalue="true" name="xmlproperties.preventStoring"/>
+                </file>
+                <file name="StartUp.instance">
+                    <!--com.gdev.timetable.StartUpTopComponent-->
+                    <attr
+                        methodvalue="org.netbeans.api.settings.Factory.create" name="instanceCreate"/>
+                    <attr
+                        methodvalue="org.netbeans.api.settings.Factory.properties" name="settings.convertor"/>
+                    <attr name="settings.instanceClass" stringvalue="com.gdev.timetable.StartUpTopComponent"/>
+                    <attr name="settings.instanceOf" stringvalue="com.gdev.timetable.StartUpTopComponent"/>
+                    <attr boolvalue="true" name="xmlproperties.preventStoring"/>
+                </file>
+            </folder>
+        </folder>
+    </folder>
+    <folder name="Actions">
+        <folder name="Edit">
+            <file name="com-libManager-action-AddBaranchAction.instance">
+                <!--com.gdev.timetable.action.AddBaranchAction-->
+                <attr
+                    bundlevalue="com.gdev.timetable.action.Bundle#CTL_AddBaranchAction" name="displayName"/>
+                <attr
+                    methodvalue="org.openide.awt.Actions.alwaysEnabled" name="instanceCreate"/>
+                <attr name="delegate" newvalue="com.gdev.timetable.action.AddBaranchAction"/>
+                <attr boolvalue="false" name="noIconInMenu"/>
+            </file>
+            <file name="com-libManager-action-AddDepartmentAction.instance">
+                <!--com.gdev.timetable.action.AddDepartmentAction-->
+                <attr
+                    bundlevalue="com.gdev.timetable.action.Bundle#CTL_AddDepartmentAction" name="displayName"/>
+                <attr
+                    methodvalue="org.openide.awt.Actions.alwaysEnabled" name="instanceCreate"/>
+                <attr name="delegate" newvalue="com.gdev.timetable.action.AddDepartmentAction"/>
+                <attr boolvalue="false" name="noIconInMenu"/>
+            </file>
+            <file name="com-libManager-action-ChangePasswordAction.instance">
+                <!--com.gdev.timetable.action.ChangePasswordAction-->
+                <attr
+                    bundlevalue="com.gdev.timetable.action.Bundle#CTL_ChangePasswordAction" name="displayName"/>
+                <attr
+                    methodvalue="org.openide.awt.Actions.alwaysEnabled" name="instanceCreate"/>
+                <attr name="delegate" newvalue="com.gdev.timetable.action.ChangePasswordAction"/>
+                <attr boolvalue="false" name="noIconInMenu"/>
+            </file>
+        </folder>
+        <folder name="Window">
+            <file name="com-libManager-BranchReportTopComponent.instance">
+                <!--com.gdev.timetable.BranchReportTopComponent-->
+                <attr
+                    methodvalue="org.openide.windows.TopComponent.openAction" name="instanceCreate"/>
+                <attr name="component" newvalue="com.gdev.timetable.BranchReportTopComponent"/>
+                <attr name="preferredID" stringvalue="BranchReportTopComponent"/>
+                <attr
+                    bundlevalue="com.gdev.timetable.Bundle#CTL_BranchReportAction" name="displayName"/>
+            </file>
+            <file name="com-libManager-DepartmentReportTopComponent.instance">
+                <!--com.gdev.timetable.DepartmentReportTopComponent-->
+                <attr
+                    methodvalue="org.openide.windows.TopComponent.openAction" name="instanceCreate"/>
+                <attr name="component" newvalue="com.gdev.timetable.DepartmentReportTopComponent"/>
+                <attr name="preferredID" stringvalue="DepartmentReportTopComponent"/>
+                <attr
+                    bundlevalue="com.gdev.timetable.Bundle#CTL_DepartmentReportAction" name="displayName"/>
+            </file>
+            <file name="com-libManager-StartUpTopComponent.instance">
+                <!--com.gdev.timetable.StartUpTopComponent-->
+                <attr
+                    methodvalue="org.openide.windows.TopComponent.openAction" name="instanceCreate"/>
+                <attr name="component" newvalue="com.gdev.timetable.StartUpTopComponent"/>
+                <attr name="preferredID" stringvalue="StartUpTopComponent"/>
+                <attr
+                    bundlevalue="com.gdev.timetable.Bundle#CTL_StartUpAction" name="displayName"/>
+            </file>
+        </folder>
+    </folder>
+    <folder name="Menu">
+        <folder name="Data Entry">
+            <file name="com-libManager-action-AddBaranchAction.shadow">
+                <!--com.gdev.timetable.action.AddBaranchAction-->
+                <attr name="originalFile" stringvalue="Actions/Edit/com-libManager-action-AddBaranchAction.instance"/>
+                <attr intvalue="3034" name="position"/>
+            </file>
+            <file name="com-libManager-action-AddDepartmentAction.shadow">
+                <!--com.gdev.timetable.action.AddDepartmentAction-->
+                <attr name="originalFile" stringvalue="Actions/Edit/com-libManager-action-AddDepartmentAction.instance"/>
+                <attr intvalue="3033" name="position"/>
+            </file>
+        </folder>
+        <folder name="Admin">
+            <file name="com-libManager-action-ChangePasswordAction.shadow">
+                <!--com.gdev.timetable.action.ChangePasswordAction-->
+                <attr name="originalFile" stringvalue="Actions/Edit/com-libManager-action-ChangePasswordAction.instance"/>
+                <attr intvalue="3333" name="position"/>
+            </file>
+        </folder>
+        <folder name="Window">
+            <file name="com-libManager-StartUpTopComponent.shadow">
+                <!--com.gdev.timetable.StartUpTopComponent-->
+                <attr name="originalFile" stringvalue="Actions/Window/com-libManager-StartUpTopComponent.instance"/>
+            </file>
+        </folder>
+        <folder name="Reports">
+            <file name="com-libManager-BranchReportTopComponent.shadow">
+                <!--com.gdev.timetable.BranchReportTopComponent-->
+                <attr name="originalFile" stringvalue="Actions/Window/com-libManager-BranchReportTopComponent.instance"/>
+                <attr intvalue="334" name="position"/>
+            </file>
+            <file name="com-libManager-DepartmentReportTopComponent.shadow">
+                <!--com.gdev.timetable.DepartmentReportTopComponent-->
+                <attr name="originalFile" stringvalue="Actions/Window/com-libManager-DepartmentReportTopComponent.instance"/>
+                <attr intvalue="333" name="position"/>
+            </file>
+        </folder>
+    </folder>
+    <folder name="Shortcuts">
+        <file name="DO-A.shadow">
+            <!--com.gdev.timetable.action.AddBaranchAction-->
+            <attr name="originalFile" stringvalue="Actions/Edit/com-libManager-action-AddBaranchAction.instance"/>
+        </file>
+        <file name="DO-D.shadow">
+            <!--com.gdev.timetable.action.AddDepartmentAction-->
+            <attr name="originalFile" stringvalue="Actions/Edit/com-libManager-action-AddDepartmentAction.instance"/>
+        </file>
+        <file name="DS-A.shadow">
+            <!--com.gdev.timetable.BranchReportTopComponent-->
+            <attr name="originalFile" stringvalue="Actions/Window/com-libManager-BranchReportTopComponent.instance"/>
+        </file>
+        <file name="DS-D.shadow">
+            <!--com.gdev.timetable.DepartmentReportTopComponent-->
+            <attr name="originalFile" stringvalue="Actions/Window/com-libManager-DepartmentReportTopComponent.instance"/>
+        </file>
+    </folder>
+    <folder name="Windows2">
+        <folder name="Components">
+            <file name="BranchReportTopComponent.settings">
+                <!--com.gdev.timetable.BranchReportTopComponent--><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE settings PUBLIC "-//NetBeans//DTD Session settings 1.0//EN" "http://www.netbeans.org/dtds/sessionsettings-1_0.dtd">
+<settings version="1.0">
+  <instance class="com.gdev.timetable.BranchReportTopComponent"/>
+</settings>
+]]></file>
+            <file name="DepartmentReportTopComponent.settings">
+                <!--com.gdev.timetable.DepartmentReportTopComponent--><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE settings PUBLIC "-//NetBeans//DTD Session settings 1.0//EN" "http://www.netbeans.org/dtds/sessionsettings-1_0.dtd">
+<settings version="1.0">
+  <instance class="com.gdev.timetable.DepartmentReportTopComponent"/>
+</settings>
+]]></file>
+            <file name="StartUpTopComponent.settings">
+                <!--com.gdev.timetable.StartUpTopComponent--><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE settings PUBLIC "-//NetBeans//DTD Session settings 1.0//EN" "http://www.netbeans.org/dtds/sessionsettings-1_0.dtd">
+<settings version="1.0">
+  <instance class="com.gdev.timetable.StartUpTopComponent"/>
+</settings>
+]]></file>
+        </folder>
+        <folder name="Modes">
+            <folder name="editor">
+                <file name="BranchReportTopComponent.wstcref">
+                    <!--com.gdev.timetable.BranchReportTopComponent--><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tc-ref PUBLIC "-//NetBeans//DTD Top Component in Mode Properties 2.0//EN" "http://www.netbeans.org/dtds/tc-ref2_0.dtd">
+<tc-ref version="2.0">
+  <tc-id id="BranchReportTopComponent"/>
+  <state opened="false"/>
+</tc-ref>
+]]></file>
+                <file name="DepartmentReportTopComponent.wstcref">
+                    <!--com.gdev.timetable.DepartmentReportTopComponent--><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tc-ref PUBLIC "-//NetBeans//DTD Top Component in Mode Properties 2.0//EN" "http://www.netbeans.org/dtds/tc-ref2_0.dtd">
+<tc-ref version="2.0">
+  <tc-id id="DepartmentReportTopComponent"/>
+  <state opened="false"/>
+</tc-ref>
+]]></file>
+                <file name="StartUpTopComponent.wstcref">
+                    <!--com.gdev.timetable.StartUpTopComponent--><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tc-ref PUBLIC "-//NetBeans//DTD Top Component in Mode Properties 2.0//EN" "http://www.netbeans.org/dtds/tc-ref2_0.dtd">
+<tc-ref version="2.0">
+  <tc-id id="StartUpTopComponent"/>
+  <state opened="false"/>
+</tc-ref>
+]]></file>
+            </folder>
+        </folder>
+    </folder>
+</filesystem>

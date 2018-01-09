@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><module codename="com.gdev.timetable">
-    <module_version install_time="1515423128853" last="true" origin="installer" specification_version="1.0">
-        <file crc="2913956833" name="config/Modules/com-gdev-timetable.xml"/>
-        <file crc="1928919611" name="modules/com-gdev-timetable.jar"/>
-        <file crc="835170054" name="modules/ext/CustomComponents.jar"/>
-        <file crc="2118878150" name="modules/ext/derby.jar"/>
-        <file crc="4027889749" name="modules/ext/ojdbc14.jar"/>
-    </module_version>
-</module>

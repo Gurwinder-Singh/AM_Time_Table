@@ -1,9 +1,0 @@
-C:\Program Files\NetBeans 8.0\platform=1509985940585
-cluster.D:/workspace/AM_Time_Table/build/cluster=1515423131420
-cluster.C:/Program Files/NetBeans 8.0/platform=1509985940585
-user=1515423131420
-crc=46
-locale=en_US
-branding=am_time_table
-java.version=1.8.0_151
-java.vm.version=25.151-b12

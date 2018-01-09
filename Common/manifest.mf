@@ -1,8 +1,0 @@
-Manifest-Version: 1.0
-OpenIDE-Module: com.gdev.common
-OpenIDE-Module-Install: com/gdev/common/Installer.class
-OpenIDE-Module-Layer: com/gdev/common/layer.xml
-OpenIDE-Module-Localizing-Bundle: com/gdev/common/Bundle.properties
-OpenIDE-Module-Requires: org.openide.windows.WindowManager
-OpenIDE-Module-Specification-Version: 1.8
-

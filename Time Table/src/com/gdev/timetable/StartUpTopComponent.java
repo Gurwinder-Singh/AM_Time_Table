@@ -77,10 +77,10 @@ public final class StartUpTopComponent extends TopComponent {
     @Override
     public void componentOpened() {
         // TODO add custom code on component opening
-          ImageIcon ic = new ImageIcon(getClass().getResource("/com/libManager/startup.png"));
+//          ImageIcon ic = new ImageIcon(getClass().getResource("/com/libManager/startup.png"));
           
-        lblimage.setIcon(new ImageIcon(ic.getImage().getScaledInstance(WindowManager.getDefault().getMainWindow().getWidth(),
-                WindowManager.getDefault().getMainWindow().getHeight(), Image.SCALE_DEFAULT)));
+//        lblimage.setIcon(new ImageIcon(ic.getImage().getScaledInstance(WindowManager.getDefault().getMainWindow().getWidth(),
+//                WindowManager.getDefault().getMainWindow().getHeight(), Image.SCALE_DEFAULT)));
 //          lblimage.setIcon(ic);
     }
 

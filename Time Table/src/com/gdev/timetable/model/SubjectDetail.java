@@ -13,10 +13,12 @@ package com.gdev.timetable.model;
 public class SubjectDetail  implements Cloneable{
     private long id;
     private String name;
+    private String alias;
     private String sub_id;
     private String type;
     private String dep_name;
     private String branch_name;
+    private int sem;
     private long dep_id;
     private long branch_id;
 
@@ -135,6 +137,34 @@ public class SubjectDetail  implements Cloneable{
      */
     public void setBranch_name(String branch_name) {
         this.branch_name = branch_name;
+    }
+
+    /**
+     * @return the alias
+     */
+    public String getAlias() {
+        return alias;
+    }
+
+    /**
+     * @param alias the alias to set
+     */
+    public void setAlias(String alias) {
+        this.alias = alias;
+    }
+
+    /**
+     * @return the sem
+     */
+    public int getSem() {
+        return sem;
+    }
+
+    /**
+     * @param sem the sem to set
+     */
+    public void setSem(int sem) {
+        this.sem = sem;
     }
     
 }

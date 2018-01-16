@@ -65,10 +65,6 @@
                 <runtime-relative-path>ext/ojdbc14.jar</runtime-relative-path>
                 <binary-origin>release/modules/ext/ojdbc14.jar</binary-origin>
             </class-path-extension>
-            <class-path-extension>
-                <runtime-relative-path>ext/CustomComponents.jar</runtime-relative-path>
-                <binary-origin>release/modules/ext/CustomComponents.jar</binary-origin>
-            </class-path-extension>
         </data>
     </configuration>
 </project>

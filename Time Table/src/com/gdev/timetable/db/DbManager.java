@@ -7,10 +7,10 @@ package com.gdev.timetable.db;
 
 import com.gdev.timetable.helper.MessageDisplay;
 import com.gdev.timetable.model.ConfigDetail;
-import com.gdev.timetable.model.SubjectDetail;
-import com.gdev.timetable.model.SubjectAllocation;
 import com.gdev.timetable.model.IdName;
 import com.gdev.timetable.model.Result;
+import com.gdev.timetable.model.SubjectAllocation;
+import com.gdev.timetable.model.SubjectDetail;
 import com.gdev.timetable.model.TeacherDetail;
 import com.gdev.timetable.model.TimeTableDetail;
 import java.io.InputStreamReader;
@@ -21,6 +21,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Vector;
 
 /**
@@ -484,6 +485,8 @@ public class DbManager {
         return v;
     }
 
+    //Not Used
+    @Deprecated
     public Result addSubject(SubjectDetail detail) {
         Connection con = null;
         PreparedStatement pst = null;
@@ -518,6 +521,46 @@ public class DbManager {
         return r;
     }
 
+    public Result addSubject(Vector data) {
+        Connection con = null;
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+        String query;
+        Result r = new Result();
+        try {
+            con = getConnection();
+            con.setAutoCommit(false);
+            for (int i = 0; i < data.size(); i++) {
+                SubjectDetail detail = (SubjectDetail) data.elementAt(i);
+                query = "select * from SUBJECTS where lower(SUB_ID) =? ";
+                pst = con.prepareStatement(query);
+                pst.setString(1, detail.getSub_id().toLowerCase());
+                rs = pst.executeQuery();
+                if (rs.next()) {
+                    con.close();
+                    r.setMessage(rs.getString("name") + " Subject Duplicated");
+                    return r;
+                }
+                query = "insert into SUBJECTS(name, ALIAS, SUB_ID, DEP_ID, BRANCH_ID, TYPE,SEM) values (?,?,?,?,?)";
+                pst = con.prepareStatement(query);
+                pst.setString(1, detail.getName());
+                pst.setString(2, detail.getAlias());
+                pst.setString(3, detail.getSub_id());
+                pst.setLong(4, detail.getDep_id());
+                pst.setLong(5, detail.getBranch_id());
+                pst.setString(6, detail.getType());
+                pst.setInt(7, detail.getSem());
+                pst.execute();
+            }
+            r.setSuccess(true);
+            con.commit();
+            con.close();
+        } catch (Exception e) {
+            handelException(e, con);
+        }
+        return r;
+    }
+
     public Result modifySubject(SubjectDetail detail) {
         Connection con = null;
         PreparedStatement pst = null;
@@ -537,14 +580,16 @@ public class DbManager {
                 return r;
             }
 
-            query = "update SUBJECTS set name= ?, SUB_ID =?, DEP_ID =?, BRANCH_ID=?, TYPE =? where id = ?";
+            query = "update SUBJECTS set name= ?, alias= ?, SUB_ID =?, DEP_ID =?, BRANCH_ID=?, TYPE =?, sem=? where id = ?";
             pst = con.prepareStatement(query);
             pst.setString(1, detail.getName());
-            pst.setString(2, detail.getSub_id());
-            pst.setLong(3, detail.getDep_id());
-            pst.setLong(4, detail.getBranch_id());
-            pst.setString(5, detail.getType());
-            pst.setLong(6, detail.getId());
+            pst.setString(2, detail.getAlias());
+            pst.setString(3, detail.getSub_id());
+            pst.setLong(4, detail.getDep_id());
+            pst.setLong(5, detail.getBranch_id());
+            pst.setString(6, detail.getType());
+            pst.setInt(7, detail.getSem());
+            pst.setLong(8, detail.getId());
             pst.execute();
             r.setSuccess(true);
             con.close();
@@ -606,10 +651,12 @@ public class DbManager {
                 SubjectDetail detail = new SubjectDetail();
                 detail.setId(rs.getLong("id"));
                 detail.setName(rs.getString("name"));
+                detail.setAlias(rs.getString("alias"));
                 detail.setSub_id(rs.getString("SUB_ID"));
                 detail.setDep_id(rs.getLong("DEP_ID"));
                 detail.setBranch_id(rs.getLong("BRANCH_ID"));
                 detail.setType(rs.getString("type"));
+                detail.setSem(rs.getInt("sem"));
                 detail.setDep_name(rs.getString("dep_name"));
                 detail.setBranch_name(rs.getString("b_name"));
                 v.add(detail);
@@ -959,7 +1006,5 @@ public class DbManager {
         }
         return r;
     }
-    
-    
 
 }

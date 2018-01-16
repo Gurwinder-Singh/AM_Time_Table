@@ -1,9 +1,9 @@
 package com.gdev.timetable.helper;
+
 import com.gdev.timetable.interfaces.ReportTableImplementPanelClass;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
-import java.util.Hashtable;
 import java.util.Vector;
 import java.util.regex.PatternSyntaxException;
 import javax.swing.JPopupMenu;
@@ -17,16 +17,15 @@ import javax.swing.table.TableRowSorter;
 
 /**
  *
- * @author Admin
+ * @author Gurwinder Singh
  */
 public class ReportTable extends javax.swing.JPanel {
 
-    private Vector reportListeners = new Vector();
+    private Vector reportListeners = new Vector<>();
     private ReportTableImplementPanelClass repListner = null;
     private TableModel model;
     private TableRowSorter<TableModel> sorter;
     private JPopupMenu popupMenu = new JPopupMenu();
-    private Hashtable<String, String> _cols = null;
 
     /**
      * Creates new form ReportTable
@@ -419,25 +418,10 @@ public class ReportTable extends javax.swing.JPanel {
 
     public TableRowSorter<TableModel> getfilterSorter() {
         if (sorter == null) {
-            sorter = new TableRowSorter<TableModel>(model);
+            sorter = new TableRowSorter<>(model);
         }
         sorter = filterNormal(value.getText(), this.sorter);
         return sorter;
-    }
-
-    public void clear_Cols() {
-        try {
-            get_Cols().clear();
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-    }
-
-    public Hashtable<String, String> get_Cols() {
-        if (_cols == null) {
-            _cols = new Hashtable<String, String>();
-        }
-        return _cols;
     }
 
     public void setTableModel(Vector data) {
@@ -449,7 +433,7 @@ public class ReportTable extends javax.swing.JPanel {
         model.setColumns(getreportListner().getColumnNames());
         model.setVisibleColumnCount(getreportListner().getVisibleColumnCount());
         table.setModel(model);
-        sorter = new TableRowSorter<TableModel>(model);
+        sorter = new TableRowSorter<>(model);
         sorter.setMaxSortKeys(3);
         table.setRowSorter(sorter);
         model.TableChanged();

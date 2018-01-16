@@ -9,11 +9,8 @@ package com.gdev.timetable;
 import com.gdev.timetable.db.DbManager;
 import com.gdev.timetable.helper.MessageDisplay;
 import com.gdev.timetable.helper.Utility;
-import com.gdev.timetable.model.SubjectAllocation;
 import com.gdev.timetable.model.IdName;
 import com.gdev.timetable.model.Result;
-import com.gdev.timetable.model.TeacherDetail;
-import java.util.Vector;
 import javax.swing.JOptionPane;
 
 /**

@@ -28,7 +28,7 @@ public class SubjectAllocation implements Cloneable {
     private String dep_name;
     private String subject_name;
     private String type;
-    private String session;
+    private String alias;
 
     @Override
     public Object clone() throws CloneNotSupportedException {
@@ -217,19 +217,6 @@ public class SubjectAllocation implements Cloneable {
         this.type = type;
     }
 
-    /**
-     * @return the session
-     */
-    public String getSession() {
-        return session;
-    }
-
-    /**
-     * @param session the session to set
-     */
-    public void setSession(String session) {
-        this.session = session;
-    }
 
     /**
      * @return the sem
@@ -290,5 +277,19 @@ public class SubjectAllocation implements Cloneable {
     @Override
     public String toString(){
         return  id+"";
+    }
+
+    /**
+     * @return the alias
+     */
+    public String getAlias() {
+        return alias;
+    }
+
+    /**
+     * @param alias the alias to set
+     */
+    public void setAlias(String alias) {
+        this.alias = alias;
     }
 }

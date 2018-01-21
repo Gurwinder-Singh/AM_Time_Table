@@ -7,7 +7,7 @@ package com.gdev.timetable.reports;
 
 import com.gdev.timetable.db.DbManager;
 import com.gdev.timetable.dialogs.CreateTeacher;
-import com.gdev.timetable.helper.Utility;
+import com.gdev.timetable.utility.Utility;
 import com.gdev.timetable.interfaces.ReportTableImplementPanelClass;
 import com.gdev.timetable.model.TeacherDetail;
 import java.awt.event.ActionEvent;

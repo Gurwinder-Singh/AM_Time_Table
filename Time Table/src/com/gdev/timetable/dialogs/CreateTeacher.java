@@ -7,7 +7,7 @@ package com.gdev.timetable.dialogs;
 
 import com.gdev.timetable.db.DbManager;
 import com.gdev.timetable.helper.MessageDisplay;
-import com.gdev.timetable.helper.Utility;
+import com.gdev.timetable.utility.Utility;
 import com.gdev.timetable.model.Result;
 import com.gdev.timetable.model.TeacherDetail;
 

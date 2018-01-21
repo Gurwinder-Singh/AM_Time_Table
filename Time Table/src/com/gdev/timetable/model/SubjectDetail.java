@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.gdev.timetable.model;
 
 /**
  *
  * @author Admin
  */
-public class SubjectDetail  implements Cloneable{
+public class SubjectDetail implements Cloneable {
+
     private long id;
     private String name;
     private String alias;
@@ -167,4 +167,9 @@ public class SubjectDetail  implements Cloneable{
         this.sem = sem;
     }
     
+    //Do not modify this
+    @Override
+    public String toString() {
+        return name;
+    }
 }

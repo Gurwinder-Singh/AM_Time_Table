@@ -8,14 +8,12 @@ package com.gdev.timetable.dialogs;
 import com.gdev.timetable.db.DbManager;
 import com.gdev.timetable.helper.AutoCompleteData;
 import com.gdev.timetable.helper.MessageDisplay;
-import com.gdev.timetable.helper.Utility;
+import com.gdev.timetable.utility.Utility;
 import com.gdev.timetable.model.IdName;
 import com.gdev.timetable.model.Result;
 import com.gdev.timetable.model.SubjectDetail;
 import java.util.Vector;
-import java.util.function.Predicate;
 import javax.swing.table.AbstractTableModel;
-import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -48,8 +46,8 @@ public class CreateSubject extends javax.swing.JDialog {
     }
 
     public void init() {
-        combBranch.setData(AutoCompleteData.getDefault().getBranchListner());
-        combDep.setData(AutoCompleteData.getDefault().getDepartmentListner());
+        combBranch.setData(AutoCompleteData.getDefault().getBranchListner(false));
+        combDep.setData(AutoCompleteData.getDefault().getDepartmentListner(false));
 
         clear();
     }
@@ -270,7 +268,7 @@ public class CreateSubject extends javax.swing.JDialog {
         if (dataVector.stream().anyMatch((Object x1) -> {
             SubjectDetail row = (SubjectDetail) x1;
             return row.getSub_id().equalsIgnoreCase(detail.getSub_id())
-                    || row.getName().equalsIgnoreCase(detail.getName())
+                    || (row.getName().equalsIgnoreCase(detail.getName()) && row.getType().equals(detail.getType()))
                     || row.getAlias().equalsIgnoreCase(detail.getAlias());
         })) {
             MessageDisplay.showErrorDialog(this, "Duplicate Record");
@@ -301,14 +299,6 @@ public class CreateSubject extends javax.swing.JDialog {
             return;
         }
 
-        // know how to cast x to SubjectDetail before foreach in stream?
-        // i'm want replace   SubjectDetail element = (SubjectDetail) x; 
-        // how  only use x. (If you know correct it and send pull request)
-        //
-//        dataVector.forEach(x ->{
-//         SubjectDetail element = (SubjectDetail) x;
-//         //
-//        });
         for (int i = 0; i < dataVector.size(); i++) {
             SubjectDetail element = (SubjectDetail) dataVector.elementAt(i);
             element.setDep_id(((IdName) combDep.getSelectedItem()).getId());
@@ -373,6 +363,7 @@ public class CreateSubject extends javax.swing.JDialog {
         txtAlias.setText("");
         txtSubId.setText("");
         dataVector.clear();
+        inputTable.tableChanged(null);
 //        combDep.getInputField().requestFocus();
     }
 

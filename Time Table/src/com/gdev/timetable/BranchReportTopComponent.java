@@ -40,7 +40,7 @@ import org.openide.util.NbBundle.Messages;
 @ActionID(category = "Window", id = "com.libManager.BranchReportTopComponent")
 @ActionReferences({
     @ActionReference(path = "Menu/Reports", position = 334),
-    @ActionReference(path = "Shortcuts", name = "DS-A")
+    @ActionReference(path = "Shortcuts", name = "DS-B")
 })
 @TopComponent.OpenActionRegistration(
         displayName = "#CTL_BranchReportAction",

@@ -1,4 +1,4 @@
-package com.gdev.timetable.helper;
+package com.gdev.timetable.utility;
 
 import java.awt.*;
 import java.awt.Dimension;
@@ -8,7 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
-import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import java.util.*;
 import javax.swing.JButton;
 import javax.swing.JComponent;
@@ -24,8 +24,6 @@ import org.openide.windows.WindowManager;
 public class Utility {
 
     private static Utility instance;
-
-
 
     /**
      * Creates a new instance of Utility
@@ -44,35 +42,19 @@ public class Utility {
         return instance;
     }
 
-    public static BigDecimal getBigDecimalValue(String val) {
-        try {
-            return val == null ? BigDecimal.ZERO : new BigDecimal(val).setScale(2, BigDecimal.ROUND_HALF_UP);
-        } catch (Exception e) {
-            return BigDecimal.ZERO;
-        }
-    }
-
-    public static String getValue(BigDecimal val) {
-        try {
-            return val == null ? "0.0" : val.setScale(2, BigDecimal.ROUND_HALF_UP).toString();
-        } catch (Exception e) {
-            return "0.0";
-        }
-    }
-
-    public static BigDecimal getBigDecimalValue(BigDecimal val) {
-        try {
-            return val == null ? BigDecimal.ZERO : val.setScale(2, BigDecimal.ROUND_HALF_UP);
-        } catch (Exception e) {
-            return BigDecimal.ZERO;
-        }
-    }
-
     public static long getLongValue(String val) {
         try {
             return val == null ? 0l : Long.valueOf(val);
         } catch (Exception e) {
             return 0l;
+        }
+    }
+
+    public static int getIntValue(String val) {
+        try {
+            return val == null ? 0 : Integer.valueOf(val);
+        } catch (Exception e) {
+            return 0;
         }
     }
 
@@ -90,7 +72,6 @@ public class Utility {
         return location;
     }
 
-   
     public static void addDefaultKeyListener(final JButton save, final JButton close) {
         KeyStroke k1 = KeyStroke.getKeyStroke(KeyEvent.VK_S, InputEvent.CTRL_MASK);
         ActionListener saveListener = new ActionListener() {
@@ -125,15 +106,6 @@ public class Utility {
                 ((TitledBorder) panel.getBorder()).getTitleColor());
     }
 
-    public static java.sql.Date toSqlDate(java.util.Date d) {
-        long time = d.getTime();
-        return (new java.sql.Date(time));
-    }
-
-    public static java.sql.Date toSqlDate(java.sql.Date d) {
-        return d;
-    }
-
     public static Color getColor(String str) {
         try {
             int red = Integer.parseInt(str.substring(0, 2), 16);
@@ -145,22 +117,9 @@ public class Utility {
         }
     }
 
-
-    public static java.util.Date getDateAfter(java.util.Date date, int val, String type) {
-        GregorianCalendar gc = new GregorianCalendar();
-        gc.setTime(date);
-        if (type.equals("D")) {
-            gc.add(Calendar.DAY_OF_YEAR, val);
-        } else if (type.equals("M")) {
-            gc.add(Calendar.MONTH, val);
-        } else if (type.equals("W")) {
-            gc.add(Calendar.WEEK_OF_YEAR, val);
-        } else if (type.equals("Y")) {
-            gc.add(Calendar.YEAR, val);
-        }
-        return gc.getTime();
+    public Color getRowBgColor(){
+        return new Color(0, 100, 255, 15);
     }
-    
     public static void setPopupMenu(String data, JPopupMenu popupMenu, ActionListener aThis) {
         if (data != null) {
             String[] arr = data.split(";");
@@ -186,5 +145,10 @@ public class Utility {
                 }
             }
         }
+    }
+
+    public String getTimeStamp() {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-YYYY-h-m-s");
+        return sdf.format(new Date());
     }
 }

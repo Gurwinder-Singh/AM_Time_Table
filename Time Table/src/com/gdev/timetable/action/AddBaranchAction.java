@@ -23,7 +23,7 @@ import org.openide.util.NbBundle.Messages;
 )
 @ActionReferences({
     @ActionReference(path = "Menu/Data Entry", position = 3034),
-    @ActionReference(path = "Shortcuts", name = "DO-A")
+    @ActionReference(path = "Shortcuts", name = "DO-B")
 })
 @Messages("CTL_AddBaranchAction=Add Branch")
 public final class AddBaranchAction implements ActionListener {

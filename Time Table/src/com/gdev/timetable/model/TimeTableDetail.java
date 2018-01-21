@@ -13,13 +13,17 @@ public class TimeTableDetail implements Cloneable {
 
     private long id;
     private long sub_alloc_id;
+    private long sub_alloc_id2;
     private long day;
     private long lec;
-    private String session;
+    private long config_id;
     private Lecture lecture;
     private int error;
     private String errorReason;
     private long load;
+    private String dep_name;
+    private String branch_name;
+    private int sem;
 
     /**
      * @return the id
@@ -75,20 +79,6 @@ public class TimeTableDetail implements Cloneable {
      */
     public void setLec(long lec) {
         this.lec = lec;
-    }
-
-    /**
-     * @return the session
-     */
-    public String getSession() {
-        return session;
-    }
-
-    /**
-     * @param session the session to set
-     */
-    public void setSession(String session) {
-        this.session = session;
     }
 
     /**
@@ -157,5 +147,75 @@ public class TimeTableDetail implements Cloneable {
      */
     public void setLoad(long load) {
         this.load = load;
+    }
+
+    /**
+     * @return the config_id
+     */
+    public long getConfig_id() {
+        return config_id;
+    }
+
+    /**
+     * @param config_id the config_id to set
+     */
+    public void setConfig_id(long config_id) {
+        this.config_id = config_id;
+    }
+
+    /**
+     * @return the dep_name
+     */
+    public String getDep_name() {
+        return dep_name;
+    }
+
+    /**
+     * @param dep_name the dep_name to set
+     */
+    public void setDep_name(String dep_name) {
+        this.dep_name = dep_name;
+    }
+
+    /**
+     * @return the branch_name
+     */
+    public String getBranch_name() {
+        return branch_name;
+    }
+
+    /**
+     * @param branch_name the branch_name to set
+     */
+    public void setBranch_name(String branch_name) {
+        this.branch_name = branch_name;
+    }
+
+    /**
+     * @return the sem
+     */
+    public int getSem() {
+        return sem;
+    }
+
+    /**
+     * @param sem the sem to set
+     */
+    public void setSem(int sem) {
+        this.sem = sem;
+    }
+
+    /**
+     * @return the sub_alloc_id2
+     */
+    public long getSub_alloc_id2() {
+        return sub_alloc_id2;
+    }
+
+    /**
+     * @param sub_alloc_id2 the sub_alloc_id2 to set
+     */
+    public void setSub_alloc_id2(long sub_alloc_id2) {
+        this.sub_alloc_id2 = sub_alloc_id2;
     }
 }

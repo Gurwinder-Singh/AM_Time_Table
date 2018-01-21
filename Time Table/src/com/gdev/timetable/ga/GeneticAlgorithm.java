@@ -31,9 +31,6 @@ public class GeneticAlgorithm {
         return mutatePopulation(crossOverPopulation(pop));
     }
 
-    private String getKey(Schedule sc, int index) {
-        return sc.hashCode() + ";" + index;
-    }
 
     Population crossOverPopulation(Population pop) {
         Population co = new Population(pop.getSchedule().size(), data, config);

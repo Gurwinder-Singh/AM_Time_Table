@@ -5,7 +5,6 @@
  */
 package com.gdev.timetable.ga;
 
-
 import com.gdev.timetable.model.ConfigDetail;
 import com.gdev.timetable.model.Lecture;
 import com.gdev.timetable.model.SubjectAllocation;
@@ -91,6 +90,31 @@ public class Schedule {
         return timeTable;
     }
 
+    public ArrayList<ArrayList<TimeTableDetail>> reArrangeOrder() {
+//        ArrayList<ArrayList<TimeTableDetail>> arrangeTimeTable = new ArrayList<>();
+//        timeTable.forEach(d -> {
+//            d.forEach(l -> {
+//                l.setLec(days);
+//            });
+//        });
+
+        IntStream.range(0, (int) config.getTotal_day()).forEach(d -> {
+            IntStream.range(0, (int) config.getTotal_lec()).forEach(l -> {
+                TimeTableDetail detail = timeTable.get(d).get(l);
+                detail.setDay(d+1);
+                detail.setLec(l+1);
+                detail.setSub_alloc_id(detail.getLecture().getGroup1().getId());
+                if (detail.getLecture().getGroup2() != null) {
+                    detail.setSub_alloc_id2(detail.getLecture().getGroup2().getId());
+                }
+                detail.setConfig_id(config.getId());
+//                detail.setSub_alloc_id(detau);
+//                arrangeTimeTable.add(timeTable.get(d));
+            });
+        });
+        return timeTable;
+    }
+
     public void sortFitness() {
         fitness = calculateFitness();
         sortOverDailyFitness();
@@ -106,7 +130,7 @@ public class Schedule {
         return fitness;
     }
 
-    //mistake in  length subject (make special genes)
+    //Used for Calculating Schedule Fitness
     private double calculateFitness() {
         numberOfConflicts = 0;
         conflicts = 0;
@@ -211,8 +235,8 @@ public class Schedule {
                         //inc daily load
                         dailyLoad++;
                         //check long lecture is same (ex:- long lecture length 2 then lec1 and lec2 will be same)
-                        if (y.getLecture().getGroup1().getId() != z.getLecture().getGroup1().getId() 
-                                || (y.getLecture().getGroup2()!=null && y.getLecture().getGroup2().getId() != z.getLecture().getGroup2().getId())) {
+                        if (y.getLecture().getGroup1().getId() != z.getLecture().getGroup1().getId()
+                                || (y.getLecture().getGroup2() != null && y.getLecture().getGroup2().getId() != z.getLecture().getGroup2().getId())) {
                             //if it same but order is not same (Ex-> lec1(0,1) and lec2(1,0))  swipe it (result = lec2(0,1))
                             if (y.getLecture().getGroup2() != null && z.getLecture().getGroup2() != null
                                     && y.getLecture().getGroup1().getId() == z.getLecture().getGroup2().getId()
@@ -250,8 +274,7 @@ public class Schedule {
 //                                ) {
 //                            numberOfConflicts++;
 //                        }
-                    
-                
+
                     if (y.getLecture().getGroup2() != null) {
 
 //                            if (y.getLecture().getGroup2().getTeacher_id() == z.getLecture().getGroup1().getTeacher_id()) {

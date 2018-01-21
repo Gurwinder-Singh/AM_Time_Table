@@ -7,7 +7,7 @@ package com.gdev.timetable.reports;
 
 import com.gdev.timetable.db.DbManager;
 import com.gdev.timetable.dialogs.CreateSubject;
-import com.gdev.timetable.helper.Utility;
+import com.gdev.timetable.utility.Utility;
 import com.gdev.timetable.interfaces.ReportTableImplementPanelClass;
 import com.gdev.timetable.model.SubjectDetail;
 import java.awt.event.ActionEvent;
@@ -46,8 +46,8 @@ import org.openide.util.NbBundle.Messages;
 )
 @Messages({
     "CTL_SubjectReportAction=Subject Report",
-    "CTL_SubjectReportTopComponent=Subject Report Window",
-    "HINT_SubjectReportTopComponent=This is a Subject Report window"
+    "CTL_SubjectReportTopComponent=Subject Report ",
+    "HINT_SubjectReportTopComponent=This is a Subject Report "
 })
 public final class SubjectReportTopComponent extends TopComponent implements ReportTableImplementPanelClass {
 
@@ -60,7 +60,7 @@ public final class SubjectReportTopComponent extends TopComponent implements Rep
         setToolTipText(Bundle.HINT_SubjectReportTopComponent());
         reportTable1.addReportListener(this);
 //        new listenrer();
-        dataVector = DbManager.getDefault().getSubjects(0, 0);
+        dataVector = DbManager.getDefault().getSubjects(0, 0, 0);
         reportTable1.setTableModel(dataVector);
         lis = new listenrer();
         Utility.setPopupMenu("Modify;Delete", reportTable1.getPopupMenu(), lis);
@@ -135,7 +135,7 @@ public final class SubjectReportTopComponent extends TopComponent implements Rep
     // End of variables declaration//GEN-END:variables
     @Override
     public void componentOpened() {
-        dataVector = DbManager.getDefault().getSubjects(0, 0);
+        dataVector = DbManager.getDefault().getSubjects(0, 0, 0);
         reportTable1.setTableModel(dataVector);
     }
 
@@ -173,7 +173,7 @@ public final class SubjectReportTopComponent extends TopComponent implements Rep
 
     @Override
     public void refreshTable() {
-        dataVector = DbManager.getDefault().getSubjects(0, 0);
+        dataVector = DbManager.getDefault().getSubjects(0, 0, 0);
         reportTable1.setTableModel(dataVector);
     }
 

@@ -8,6 +8,7 @@ package com.gdev.timetable.helper;
 import com.gdev.timetable.interfaces.AutoCompleteListner;
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.MouseAdapter;
@@ -65,7 +66,12 @@ public class AutoCompleteComboBox<T> extends JComboBox {
     public void setImplement(AutoCompleteListner implement) {
         listner = implement;
     }
-
+     
+//    @Override
+//    public void addActionListener(ActionListener l){
+//        getEditor().addActionListener(l);
+//    }
+    
     private void init() {
         setEditable(true);
         //if you need custom model uncomment the all custom model code

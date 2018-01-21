@@ -5,7 +5,7 @@
  */
 package com.gdev.timetable.action;
 
-import com.gdev.timetable.ga.TimeTableGenerator;
+import com.gdev.timetable.ChangePasswordDialog;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import org.openide.awt.ActionID;
@@ -26,10 +26,8 @@ public final class ChangePasswordAction implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        TimeTableGenerator gen= new TimeTableGenerator();
-        gen.generate();
-//        ChangePasswordDialog dialog = ChangePasswordDialog.getDefault();
-//        dialog.clear();
-//        dialog.setVisible(true);
+        ChangePasswordDialog dialog = ChangePasswordDialog.getDefault();
+        dialog.clear();
+        dialog.setVisible(true);
     }
 }

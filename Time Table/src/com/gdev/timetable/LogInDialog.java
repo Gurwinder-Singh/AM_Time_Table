@@ -8,7 +8,7 @@ package com.gdev.timetable;
 
 import com.gdev.timetable.db.DbManager;
 import com.gdev.timetable.helper.MessageDisplay;
-import com.gdev.timetable.helper.Utility;
+import com.gdev.timetable.utility.Utility;
 import javax.swing.JDialog;
 import javax.xml.bind.DatatypeConverter;
 import org.openide.LifecycleManager;

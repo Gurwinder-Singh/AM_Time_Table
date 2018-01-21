@@ -4,6 +4,7 @@
  */
 package com.gdev.timetable.helper;
 
+import com.gdev.timetable.utility.Utility;
 import java.awt.Color;
 import java.awt.Component;
 import javax.swing.JTable;

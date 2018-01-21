@@ -1,6 +1,9 @@
 package com.gdev.timetable.helper;
 
+import com.gdev.timetable.utility.Utility;
 import com.gdev.timetable.interfaces.ReportTableImplementPanelClass;
+import java.awt.Color;
+import java.awt.Component;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
@@ -12,6 +15,7 @@ import javax.swing.RowFilter;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.table.AbstractTableModel;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableRowSorter;
 
@@ -332,7 +336,7 @@ public class ReportTable extends javax.swing.JPanel {
 
         @Override
         public Object getValueAt(int nrow, int ncol) {
-            if (getreportListner().getcolumnClass(ncol) == Integer.class) {
+            if (getreportListner().getcolumnClass(ncol) == Integer.class && ncol==0) {
                 return getDisplayRowNumberForTable(nrow) + 1;
             }
             return getreportListner().getValueAt(nrow, ncol);
@@ -445,6 +449,35 @@ public class ReportTable extends javax.swing.JPanel {
     }
 
     private void setDefaultCellRenderer() {
+        table.setDefaultRenderer(Object.class, new DefaultTableCellRenderer() {
+            @Override
+            public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+                final Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+                if (isSelected) {
+                    c.setBackground(table.getSelectionBackground());
+                    c.setForeground(Color.WHITE);
+                } else {
+                    c.setBackground(row % 2 == 0 ? Utility.getDefault().getRowBgColor() : Color.WHITE);
+                    c.setForeground(Color.BLACK);
+                }
+                return this;
+            }
+        });
+
+        table.setDefaultRenderer(Number.class, new DefaultTableCellRenderer() {
+            @Override
+            public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+                final Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+                if (isSelected) {
+                    c.setBackground(table.getSelectionBackground());
+                    c.setForeground(Color.WHITE);
+                } else {
+                    c.setBackground(row % 2 == 0 ? Utility.getDefault().getRowBgColor() : Color.WHITE);
+                    c.setForeground(Color.BLACK);
+                }
+                return this;
+            }
+        });
         SerialNumberClassCellRenderer cellRenderer = new SerialNumberClassCellRenderer();
         if (this.model.dataVector != null && !this.model.dataVector.isEmpty()) {
             for (int row = 0; row < this.model.dataVector.size(); row++) {

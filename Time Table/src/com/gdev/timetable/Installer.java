@@ -35,7 +35,10 @@ public class Installer extends ModuleInstall {
                             @Override
                             public void run() {
                                 WindowManager.getDefault().updateUI();
-                                StartUpTopComponent component = new StartUpTopComponent();
+//                                StartUpTopComponent component = new StartUpTopComponent();
+//                                component.open();
+//                                component.requestActive();
+                                DepartmentReportTopComponent component = new DepartmentReportTopComponent();
                                 component.open();
                                 component.requestActive();
                             }

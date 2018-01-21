@@ -5,11 +5,13 @@
  */
 package com.gdev.timetable.ga;
 
+import com.gdev.timetable.model.ConfigDetail;
 import com.gdev.timetable.model.SubjectAllocation;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Vector;
 import java.util.stream.IntStream;
+import java.util.stream.LongStream;
 
 /**
  *
@@ -19,6 +21,7 @@ public class Data {
 
     private static Data _mInstance;
     private HashMap<Long, ArrayList<SubjectAllocation>> allocations;
+    private Vector<ConfigDetail> _config;
     private HashMap<String, Vector<Integer>> teachers;
 
     public static Data getInstance() {
@@ -40,16 +43,14 @@ public class Data {
 //                 all.setLength(2);
 //                 all.setRepeat(2);
 //            }else{
-            all.setLoad(x==3|| x==1?8:8);
-            
-             all.setLength(x==3|| x==1?2:1);
-              all.setRepeat(x==3|| x==1?2:1);
+            all.setLoad(x == 3 || x == 1 ? 8 : 8);
+
+            all.setLength(x == 3 || x == 1 ? 2 : 1);
+            all.setRepeat(x == 3 || x == 1 ? 2 : 1);
 //            }
-           
-           
-            
-            all.setGroup(x==3|| x==1?2:1);
-            
+
+            all.setGroup(x == 3 || x == 1 ? 2 : 1);
+
             all.setId(x);
             v.add(all);
         });
@@ -57,37 +58,49 @@ public class Data {
 
     }
 
+    public void setConfig(Vector<ConfigDetail> config){
+        _config = config;
+    }
+    
     public void setAllocation(Vector<SubjectAllocation> alloc) {
         allocations = new HashMap<>();
         alloc.forEach(x -> {
-            ArrayList<SubjectAllocation> y = allocations.get(x.getConfig_id());
+            ArrayList<SubjectAllocation> y = allocations.get(getConfig(x.getDep_id(), x.getBranch_id(), x.getSem()));
             if (y == null) {
                 y = new ArrayList<>();
             }
             y.add(x);
-            allocations.put(x.getConfig_id(), y);
+            allocations.put(getConfig(x.getDep_id(), x.getBranch_id(), x.getSem()), y);
         });
 
+    }
+
+    public long getConfig(long dep, long branch, long sem) {
+        return _config.stream().filter(c -> {
+            return c.getDep_id() == dep && c.getBranch_id() == branch && c.getSem() == sem;
+        }).flatMapToLong(c -> {
+            return LongStream.of(c.getId());
+        }).findFirst().orElse(0);
     }
 
     public ArrayList<SubjectAllocation> getAllocation(long config_id) {
         return this.allocations.get(config_id);
     }
 
-    public SubjectAllocation getSpecialGen(long config_id){
-        if(this.allocations.get(config_id) == null){
+    public SubjectAllocation getSpecialGen(long config_id) {
+        if (this.allocations.get(config_id) == null) {
             throw new NullPointerException("Allocation not found");
         }
         ArrayList<SubjectAllocation> alloc = new ArrayList<>();
-        allocations.get(config_id).stream().filter(x -> x.getLength() >1).forEach(x ->{
-            
+        allocations.get(config_id).stream().filter(x -> x.getLength() > 1).forEach(x -> {
+
             alloc.add(x);
         });
-        
+
         return alloc.get((int) (alloc.size() * Math.random()));
-        
+
     }
-    
+
     public boolean isTeacherAval(long teacher_id, int day, int lecture) {
         return checkTeacherAval(teacher_id, day, lecture);
     }

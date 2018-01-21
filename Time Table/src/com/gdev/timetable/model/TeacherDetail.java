@@ -9,12 +9,11 @@ package com.gdev.timetable.model;
  *
  * @author Admin
  */
-public class TeacherDetail implements Cloneable{
+public class TeacherDetail implements Cloneable {
 
     private long id;
     private String name;
     private String teach_no;
-
 
     @Override
     public Object clone() throws CloneNotSupportedException {
@@ -61,5 +60,11 @@ public class TeacherDetail implements Cloneable{
      */
     public void setTeach_no(String teach_no) {
         this.teach_no = teach_no;
+    }
+
+    //Do not modify this
+    @Override
+    public String toString() {
+        return name;
     }
 }

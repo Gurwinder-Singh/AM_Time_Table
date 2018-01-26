@@ -1,5 +1,6 @@
-# AM_Time_Table
+# AM Time Table Manager
  Andromeda Time Table Manager
+ (Default Password - admin)
 
 ## Prerequisites
 For Run this project You need:-

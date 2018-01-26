@@ -7,9 +7,12 @@ package com.gdev.timetable.reports;
 
 import com.gdev.timetable.db.DbManager;
 import com.gdev.timetable.dialogs.CreateSubject;
-import com.gdev.timetable.utility.Utility;
+import com.gdev.timetable.dialogs.FourFieldComboDialog;
+import com.gdev.timetable.helper.MessageDisplay;
 import com.gdev.timetable.interfaces.ReportTableImplementPanelClass;
+import com.gdev.timetable.model.Result;
 import com.gdev.timetable.model.SubjectDetail;
+import com.gdev.timetable.utility.Utility;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -19,8 +22,9 @@ import org.netbeans.api.settings.ConvertAsProperties;
 import org.openide.awt.ActionID;
 import org.openide.awt.ActionReference;
 import org.openide.awt.ActionReferences;
-import org.openide.windows.TopComponent;
+import org.openide.util.Exceptions;
 import org.openide.util.NbBundle.Messages;
+import org.openide.windows.TopComponent;
 
 /**
  * Top component which displays something.
@@ -77,30 +81,32 @@ public final class SubjectReportTopComponent extends TopComponent implements Rep
         public void actionPerformed(ActionEvent e) {
             if (e.getSource() instanceof JMenuItem) {
                 if (e.getActionCommand().equalsIgnoreCase("Modify")) {
-//                    if (reportTable1.getSelectedRow() > -1) {
-//                        IdName in = (IdName) reportTable1.getSelectedModelData().elementAt(0);
-//                        SingleFieldDialog dialog = SingleFieldDialog.getDefault();
-//                        dialog.setKey("Modify_Department");
-//                        try {
-//                            dialog.setResponse(in.clone());
-//                        } catch (CloneNotSupportedException ex) {
-//                            Exceptions.printStackTrace(ex);
-//                        }
-//                        dialog.setVisible(true);
-//                    }
+                    if (reportTable1.getSelectedRow() > -1) {
+                        SubjectDetail in = (SubjectDetail) reportTable1.getSelectedModelData().elementAt(0);
+                        FourFieldComboDialog dialog = FourFieldComboDialog.getDefault();
+                        dialog.setKey("MODIFY_SUBJECT");
+                        try {
+                            Vector v = new Vector();
+                            v.add(in.clone());
+                            dialog.setInfo(v);
+                        } catch (CloneNotSupportedException ex) {
+                            Exceptions.printStackTrace(ex);
+                        }
+                        dialog.setVisible(true);
+                    }
 
                 } else if (e.getActionCommand().equalsIgnoreCase("Delete")) {
-//                    if (reportTable1.getSelectedRow() > -1) {
-//                        if (MessageDisplay.showOptionDialog(null, "Do You Want to Delete This?", "Sure") == MessageDisplay.YES_OPTION) {
-//                            IdName in = (IdName) reportTable1.getSelectedModelData().elementAt(0);
-//                            Result r = DbManager.getDefault().deleteDepartment(in);
-//                            if (r.isSuccess()) {
-//                                MessageDisplay.showSuccessDialog(null, "Department Deleted Succesfully", "Success");
-//                            } else {
-//                                MessageDisplay.showErrorDialog(null, r.getMessage());
-//                            }
-//                        }
-//                    }
+                    if (reportTable1.getSelectedRow() > -1) {
+                        if (MessageDisplay.showOptionDialog(null, "Do You Want to Delete This?", "Sure") == MessageDisplay.YES_OPTION) {
+                            SubjectDetail in = (SubjectDetail) reportTable1.getSelectedModelData().elementAt(0);
+                            Result r = DbManager.getDefault().deleteSubject(in);
+                            if (r.isSuccess()) {
+                                MessageDisplay.showSuccessDialog(null, "Subject Deleted Succesfully", "Success");
+                            } else {
+                                MessageDisplay.showErrorDialog(null, r.getMessage());
+                            }
+                        }
+                    }
                 }
             }
         }

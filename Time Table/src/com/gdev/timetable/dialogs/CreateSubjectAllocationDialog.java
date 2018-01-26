@@ -92,7 +92,6 @@ public class CreateSubjectAllocationDialog extends javax.swing.JDialog {
         combGroup = new javax.swing.JComboBox();
         jLabel11 = new javax.swing.JLabel();
         txtRepeat = new javax.swing.JTextField();
-        jLabel12 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -120,6 +119,11 @@ public class CreateSubjectAllocationDialog extends javax.swing.JDialog {
         org.openide.awt.Mnemonics.setLocalizedText(jLabel4, org.openide.util.NbBundle.getMessage(CreateSubjectAllocationDialog.class, "CreateSubjectAllocationDialog.jLabel4.text")); // NOI18N
 
         txtLength.setText(org.openide.util.NbBundle.getMessage(CreateSubjectAllocationDialog.class, "CreateSubjectAllocationDialog.txtLength.text")); // NOI18N
+        txtLength.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtLengthFocusLost(evt);
+            }
+        });
 
         org.openide.awt.Mnemonics.setLocalizedText(jLabel5, org.openide.util.NbBundle.getMessage(CreateSubjectAllocationDialog.class, "CreateSubjectAllocationDialog.jLabel5.text")); // NOI18N
 
@@ -191,8 +195,6 @@ public class CreateSubjectAllocationDialog extends javax.swing.JDialog {
 
         txtRepeat.setText(org.openide.util.NbBundle.getMessage(CreateSubjectAllocationDialog.class, "CreateSubjectAllocationDialog.txtRepeat.text")); // NOI18N
 
-        org.openide.awt.Mnemonics.setLocalizedText(jLabel12, org.openide.util.NbBundle.getMessage(CreateSubjectAllocationDialog.class, "CreateSubjectAllocationDialog.jLabel12.text")); // NOI18N
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -226,9 +228,7 @@ public class CreateSubjectAllocationDialog extends javax.swing.JDialog {
                                         .addComponent(jLabel11)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(txtRepeat, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabel12)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(combSubject, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -239,7 +239,7 @@ public class CreateSubjectAllocationDialog extends javax.swing.JDialog {
                                         .addComponent(jLabel4)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(txtLength, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE))))
+                                        .addGap(0, 22, Short.MAX_VALUE))))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -302,8 +302,7 @@ public class CreateSubjectAllocationDialog extends javax.swing.JDialog {
                             .addComponent(jLabel10)
                             .addComponent(combGroup, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel11)
-                            .addComponent(txtRepeat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel12))
+                            .addComponent(txtRepeat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -353,6 +352,18 @@ public class CreateSubjectAllocationDialog extends javax.swing.JDialog {
         }
         if (Utility.getLongValue(txtLoad.getText()) <= 0) {
             MessageDisplay.showErrorDialog(this, "Please Enter Lecture Total Load");
+            txtLoad.requestFocus();
+            return;
+        }
+        
+        //Repeat can't be less then length and load is number of lecture in week 
+        if (Utility.getIntValue(txtRepeat.getText()) > Utility.getIntValue(txtLength.getText())) {
+            MessageDisplay.showErrorDialog(this, "Invalid Daily Max Repeat (Repeat can't be less then length) ");
+            txtRepeat.requestFocus();
+            return;
+        }
+        if (Utility.getIntValue(txtLoad.getText()) > Utility.getIntValue(txtLength.getText())) {
+            MessageDisplay.showErrorDialog(this, "Invalid Load (Load can't be less then length) ");
             txtLoad.requestFocus();
             return;
         }
@@ -455,11 +466,20 @@ public class CreateSubjectAllocationDialog extends javax.swing.JDialog {
 
     private void combSubjectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combSubjectActionPerformed
         SubjectDetail detail = ((SubjectDetail) combSubject.getSelectedItem());
-        if (detail != null && detail.getId()> 0) {
+        if (detail != null && detail.getId() > 0) {
             combType.setSelectedItem(detail.getType());
         }
 
     }//GEN-LAST:event_combSubjectActionPerformed
+
+    private void txtLengthFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtLengthFocusLost
+        if (Utility.getIntValue(txtRepeat.getText()) > Utility.getIntValue(txtLength.getText())) {
+            txtRepeat.setText(txtLength.getText());
+        }
+        if (Utility.getIntValue(txtLoad.getText()) > Utility.getIntValue(txtLength.getText())) {
+            txtLoad.setText(txtLength.getText());
+        }
+    }//GEN-LAST:event_txtLengthFocusLost
 
     private void setSubjectData() {
         if (combDep.getSelectedItem() != null && ((IdName) combDep.getSelectedItem()).getId() > 0
@@ -488,7 +508,6 @@ public class CreateSubjectAllocationDialog extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -514,7 +533,7 @@ public class CreateSubjectAllocationDialog extends javax.swing.JDialog {
 //        txtAlias.setText("");
         txtLength.setText("");
         dataVector.clear();
-         inputTable.tableChanged(null);
+        inputTable.tableChanged(null);
         combDep.getInputField().requestFocus();
     }
 

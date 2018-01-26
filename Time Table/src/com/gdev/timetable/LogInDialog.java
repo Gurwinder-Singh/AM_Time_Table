@@ -31,6 +31,7 @@ public class LogInDialog extends javax.swing.JDialog {
         this.setLocation(Utility.getCenterLocation(this.getSize()));
         this.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
         txtPassword.setText("");
+        jPanel1.setBorder(Utility.getBorder("Login", jPanel1));
     }
 
     public static LogInDialog getDefault() {

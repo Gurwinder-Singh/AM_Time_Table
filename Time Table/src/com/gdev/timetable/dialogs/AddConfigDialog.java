@@ -258,6 +258,7 @@ public class AddConfigDialog extends javax.swing.JDialog {
             CheckBranches(branch, sem, config, ((IdName) combDep.getSelectedItem()));
         }
 
+        
         Result r = DbManager.getDefault().addConfig(config, chkUpdateDup.isSelected());
           if (r.isSuccess()) {
             MessageDisplay.showSuccessDialog(null, "Configuration Added Succesfully", "Success");

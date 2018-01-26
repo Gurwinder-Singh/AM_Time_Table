@@ -5,7 +5,6 @@
  */
 package com.gdev.timetable;
 
-
 import com.gdev.timetable.db.DbManager;
 import com.gdev.timetable.helper.MessageDisplay;
 import com.gdev.timetable.utility.Utility;
@@ -28,6 +27,7 @@ public class ChangePasswordDialog extends javax.swing.JDialog {
         initComponents();
         setLocation(Utility.getCenterLocation(getSize()));
         Utility.addDefaultKeyListener(btnSubmit, btnCancel);
+        jPanel1.setBorder(Utility.getBorder("Change Password", jPanel1));
     }
 
     public static ChangePasswordDialog getDefault() {
@@ -168,21 +168,20 @@ public class ChangePasswordDialog extends javax.swing.JDialog {
         String nPass = DatatypeConverter.printBase64Binary(newPass.getBytes());
         String oldPass = new String(oldPassword.getPassword());
         String oPass = DatatypeConverter.printBase64Binary(oldPass.getBytes());
-        if(DbManager.getDefault().updatePassword(oPass, nPass)){
+        if (DbManager.getDefault().updatePassword(oPass, nPass)) {
             MessageDisplay.showSuccessDialog(this, "Password Changed", "Success");
             this.dispose();
-        }else{
+        } else {
             MessageDisplay.showErrorDialog(this, "Old Password Not Matched.");
-            
+
         }
 
     }//GEN-LAST:event_btnSubmitActionPerformed
 
-
-    public void clear(){
-       oldPassword.setText("");
-       newPassword.setText("");
-       RePassword.setText("");
+    public void clear() {
+        oldPassword.setText("");
+        newPassword.setText("");
+        RePassword.setText("");
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPasswordField RePassword;

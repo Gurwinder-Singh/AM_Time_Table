@@ -29,6 +29,7 @@ public class CreateTeacher extends javax.swing.JDialog {
         initComponents();
         setLocation(Utility.getCenterLocation(getSize()));
         Utility.addDefaultKeyListener(btnSave, btnClose);
+         jPanel1.setBorder(Utility.getBorder("Create Teacher", jPanel1));
     }
 
     public static CreateTeacher getDefault() {
@@ -157,24 +158,28 @@ public class CreateTeacher extends javax.swing.JDialog {
             r = DbManager.getDefault().addTeacher(detail);
         }
         if (r.isSuccess()) {
-            MessageDisplay.showSuccessDialog(null, "Teacher Added Succesfully", "Success");
+            MessageDisplay.showSuccessDialog(null, "Teacher " + (modify ? "Modify" : "Added") + " Succesfully", "Success");
+            if (modify) {
+                this.dispose();
+            }
             clear();
         } else {
             MessageDisplay.showErrorDialog(null, r.getMessage());
         }
+
         txtName.requestFocus();
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
         this.dispose();
-        mInsatnce=null;
+        mInsatnce = null;
     }//GEN-LAST:event_btnCloseActionPerformed
 
     public void setModify(TeacherDetail detail) {
         modify = true;
         id = detail.getId();
         txtName.setText(detail.getName());
-        txtName.setText(detail.getTeach_no());
+        txtRegNo.setText(detail.getTeach_no());
     }
 
     private void clear() {

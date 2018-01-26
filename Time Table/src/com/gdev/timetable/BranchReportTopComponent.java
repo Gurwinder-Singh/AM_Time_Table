@@ -11,6 +11,7 @@ import com.gdev.timetable.helper.MessageDisplay;
 import com.gdev.timetable.interfaces.ReportTableImplementPanelClass;
 import com.gdev.timetable.model.IdName;
 import com.gdev.timetable.model.Result;
+import com.gdev.timetable.utility.Utility;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -21,8 +22,8 @@ import org.openide.awt.ActionID;
 import org.openide.awt.ActionReference;
 import org.openide.awt.ActionReferences;
 import org.openide.util.Exceptions;
-import org.openide.windows.TopComponent;
 import org.openide.util.NbBundle.Messages;
+import org.openide.windows.TopComponent;
 
 /**
  * Top component which displays something.
@@ -65,7 +66,7 @@ public final class BranchReportTopComponent extends TopComponent implements Repo
         dataVector = DbManager.getDefault().getBranchs();
         reportTable1.setTableModel(dataVector);
         lis = new listenrer();
-//        Utility.setPopupMenu("Modify;Delete", reportTable1.getPopupMenu(), lis);
+        Utility.setPopupMenu("Modify;Delete", reportTable1.getPopupMenu(), lis);
         reportTable1.setTitle("Branches");
     }
 

@@ -7,11 +7,11 @@ package com.gdev.timetable.reports;
 
 import com.gdev.timetable.db.DbManager;
 import com.gdev.timetable.dialogs.AddConfigDialog;
-import com.gdev.timetable.dialogs.CreateSubjectAllocationDialog;
-import com.gdev.timetable.utility.Utility;
+import com.gdev.timetable.helper.MessageDisplay;
 import com.gdev.timetable.interfaces.ReportTableImplementPanelClass;
 import com.gdev.timetable.model.ConfigDetail;
-import com.gdev.timetable.model.SubjectAllocation;
+import com.gdev.timetable.model.Result;
+import com.gdev.timetable.utility.Utility;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -21,8 +21,8 @@ import org.netbeans.api.settings.ConvertAsProperties;
 import org.openide.awt.ActionID;
 import org.openide.awt.ActionReference;
 import org.openide.awt.ActionReferences;
-import org.openide.windows.TopComponent;
 import org.openide.util.NbBundle.Messages;
+import org.openide.windows.TopComponent;
 
 /**
  * Top component which displays something.
@@ -80,7 +80,7 @@ public final class ConfigurationReportTopComponent extends TopComponent implemen
             if (e.getSource() instanceof JMenuItem) {
                 if (e.getActionCommand().equalsIgnoreCase("Modify")) {
 //                    if (reportTable1.getSelectedRow() > -1) {
-//                        IdName in = (IdName) reportTable1.getSelectedModelData().elementAt(0);
+//                        ConfigDetail in = (ConfigDetail) reportTable1.getSelectedModelData().elementAt(0);
 //                        SingleFieldDialog dialog = SingleFieldDialog.getDefault();
 //                        dialog.setKey("Modify_Department");
 //                        try {
@@ -92,17 +92,17 @@ public final class ConfigurationReportTopComponent extends TopComponent implemen
 //                    }
 
                 } else if (e.getActionCommand().equalsIgnoreCase("Delete")) {
-//                    if (reportTable1.getSelectedRow() > -1) {
-//                        if (MessageDisplay.showOptionDialog(null, "Do You Want to Delete This?", "Sure") == MessageDisplay.YES_OPTION) {
-//                            IdName in = (IdName) reportTable1.getSelectedModelData().elementAt(0);
-//                            Result r = DbManager.getDefault().deleteDepartment(in);
-//                            if (r.isSuccess()) {
-//                                MessageDisplay.showSuccessDialog(null, "Department Deleted Succesfully", "Success");
-//                            } else {
-//                                MessageDisplay.showErrorDialog(null, r.getMessage());
-//                            }
-//                        }
-//                    }
+                    if (reportTable1.getSelectedRow() > -1) {
+                        if (MessageDisplay.showOptionDialog(null, "Do You Want to Delete This?", "Sure") == MessageDisplay.YES_OPTION) {
+                            ConfigDetail in = (ConfigDetail) reportTable1.getSelectedModelData().elementAt(0);
+                            Result r = DbManager.getDefault().deleteConfig(in);
+                            if (r.isSuccess()) {
+                                MessageDisplay.showSuccessDialog(null, "Department Deleted Succesfully", "Success");
+                            } else {
+                                MessageDisplay.showErrorDialog(null, r.getMessage());
+                            }
+                        }
+                    }
                 }
             }
         }

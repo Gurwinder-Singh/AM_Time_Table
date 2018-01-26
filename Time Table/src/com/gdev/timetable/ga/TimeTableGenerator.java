@@ -17,12 +17,12 @@ import java.util.ArrayList;
 import java.util.Vector;
 
 /**
- * Written by Gurwinder Singh
+ *
  *
  * @author Gurwinder Singh
  *
  */
- public class TimeTableGenerator {
+public class TimeTableGenerator {
 
     private Vector<SubjectAllocation> _allocations;
     private Vector<ConfigDetail> _config;
@@ -59,9 +59,11 @@ import java.util.Vector;
 
     private boolean generateTimeTable() {
 
-        Data data = Data.getInstance();
+        Data data = new Data();
         data.setConfig(_config);
         data.setAllocation(_allocations);
+        data.loadTeacherAval(DbManager.getDefault().getTeacherAllocatedDetail());
+       
 //        data.init(); //for testing
 
         // for testing
@@ -73,46 +75,50 @@ import java.util.Vector;
 //        config.setMax_generations(2000);
         //
         //filter for allocation avalable 
-        _config.stream().filter(x -> data.getAllocation(x.getId()) != null &&
-                TimeTableGenerateLoading.getDefault().isRunning()).forEach(config -> {
-            int genNum = 0;
-            GeneticAlgorithm ga = new GeneticAlgorithm(data, config);
-            Population pop = new Population(POPULATION_SIZE, data, config).sortByFitness();
-            pop.getSchedule().forEach(sc -> {
-                System.out.println("    " + SCNUB++ + "    | " + sc + " | "
-                        + String.format("%.5f", sc.getFitness()) + " | " + sc.getNumberOfConflicts()
-                );
-            });
-//        printAsTable(pop.getSchedule().get(0), genNum);
-            while (pop.getSchedule().get(0).getFitness() != 1 && genNum < config.getMax_generations()
-                    && TimeTableGenerateLoading.getDefault().isRunning()) {
-                ++genNum;
-                pop = ga.evolve(pop).sortByFitness();
-                SCNUB = 0;
-                System.out.println("");
-                System.out.println("Generation " + genNum);
-                if (pop.getSchedule().get(0).getFitness() == 1 || genNum > 0) {
-                    pop.getSchedule().stream().limit(1).forEach(sc -> {
-                        sc.sortFitness();
+        _config.stream().filter(x -> data.getAllocation(x.getId()) != null
+                && TimeTableGenerateLoading.getDefault().isRunning()).forEach(config -> {
+                    int genNum = 0;
+                    GeneticAlgorithm ga = new GeneticAlgorithm(data, config);
+                    Population pop = new Population(POPULATION_SIZE, data, config).sortByFitness();
+                    pop.getSchedule().forEach(sc -> {
                         System.out.println("    " + SCNUB++ + "    | " + sc + " | "
                                 + String.format("%.5f", sc.getFitness()) + " | " + sc.getNumberOfConflicts()
                         );
-
                     });
-                }
+//        printAsTable(pop.getSchedule().get(0), genNum);
+                    while (pop.getSchedule().get(0).getFitness() != 1 && genNum < config.getMax_generations()
+                    && TimeTableGenerateLoading.getDefault().isRunning()) {
+                        ++genNum;
+                        pop = ga.evolve(pop).sortByFitness();
+                        SCNUB = 0;
+                        System.out.println("");
+                        System.out.println("Generation " + genNum);
+                        if (pop.getSchedule().get(0).getFitness() == 1 || genNum > 0) {
+                            pop.getSchedule().stream().limit(1).forEach(sc -> {
+                                sc.sortFitness();
+                                System.out.println("    " + SCNUB++ + "    | " + sc + " | "
+                                        + String.format("%.5f", sc.getFitness()) + " | " + sc.getNumberOfConflicts()
+                                );
+
+                            });
+                        }
 //          printAsTable(pop.getSchedule().get(0), genNum);
 
-            }
-            if (pop.getSchedule().get(0).getFitness() == 1) {
-                ArrayList<ArrayList<TimeTableDetail>> tt = pop.getSchedule().get(0).reArrangeOrder();
-                tt.forEach(x -> {
-                    x.forEach(y -> {
-                        y.setConfig_id(config.getId());
-                        timetables.add(y);
-                    });
+                    }
+                    if (pop.getSchedule().get(0).getFitness() == 1) {
+                        ArrayList<ArrayList<TimeTableDetail>> tt = pop.getSchedule().get(0).reArrangeOrder();
+                        tt.forEach(x -> {
+                            x.forEach(y -> {
+                                y.setConfig_id(config.getId());
+                                data.addTeacherAval(y.getLecture().getGroup1().getTeacher_id(), tt.indexOf(x), x.indexOf(y));
+                                if (y.getLecture().getGroup2() != null) {
+                                    data.addTeacherAval(y.getLecture().getGroup2().getTeacher_id(), tt.indexOf(x), x.indexOf(y));
+                                }
+                                timetables.add(y);
+                            });
+                        });
+                    }
                 });
-            }
-        });
 
         return saveTimeTable();
     }

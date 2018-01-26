@@ -36,6 +36,7 @@ public class CreateSubject extends javax.swing.JDialog {
         dataVector = new Vector();
         inputTable.setModel(new CustomTableModel());
         setTitle("Create Subject");
+         jPanel1.setBorder(Utility.getBorder("Create Subject", jPanel1));
     }
 
     public static CreateSubject getDefault() {
@@ -86,6 +87,8 @@ public class CreateSubject extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(org.openide.util.NbBundle.getMessage(CreateSubject.class, "CreateSubject.jPanel1.border.title"))); // NOI18N
+
         org.openide.awt.Mnemonics.setLocalizedText(jLabel1, org.openide.util.NbBundle.getMessage(CreateSubject.class, "CreateSubject.jLabel1.text")); // NOI18N
 
         org.openide.awt.Mnemonics.setLocalizedText(jLabel2, org.openide.util.NbBundle.getMessage(CreateSubject.class, "CreateSubject.jLabel2.text")); // NOI18N
@@ -132,6 +135,11 @@ public class CreateSubject extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        inputTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                inputTableMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(inputTable);
 
         org.openide.awt.Mnemonics.setLocalizedText(jLabel7, org.openide.util.NbBundle.getMessage(CreateSubject.class, "CreateSubject.jLabel7.text")); // NOI18N
@@ -231,7 +239,7 @@ public class CreateSubject extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSave)
                     .addComponent(btnClose))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -242,7 +250,9 @@ public class CreateSubject extends javax.swing.JDialog {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -260,12 +270,19 @@ public class CreateSubject extends javax.swing.JDialog {
             txtSubId.requestFocus();
             return;
         }
-        SubjectDetail detail = new SubjectDetail();
+        SubjectDetail detail;
+        if (btnAdd.getText().equals("Modify")) {
+            detail = (SubjectDetail) dataVector.elementAt(inputTable.getSelectedRow());
+        } else {
+            detail = new SubjectDetail();
+        }
+
         detail.setName(txtName.getText());
         detail.setAlias(txtAlias.getText());
         detail.setSub_id(txtSubId.getText());
         detail.setType(combType.getSelectedItem().toString());
-        if (dataVector.stream().anyMatch((Object x1) -> {
+        if (dataVector.stream().filter(x -> !(btnAdd.getText().equals("Modify") && dataVector.indexOf(x) == inputTable.getSelectedRow())).
+                anyMatch((Object x1) -> {
             SubjectDetail row = (SubjectDetail) x1;
             return row.getSub_id().equalsIgnoreCase(detail.getSub_id())
                     || (row.getName().equalsIgnoreCase(detail.getName()) && row.getType().equals(detail.getType()))
@@ -274,12 +291,18 @@ public class CreateSubject extends javax.swing.JDialog {
             MessageDisplay.showErrorDialog(this, "Duplicate Record");
             return;
         }
+        if (btnAdd.getText().equals("Add")) {
         dataVector.add(detail);
+        }
         inputTable.tableChanged(null);
         txtName.setText("");
         txtAlias.setText("");
         txtSubId.setText("");
         combType.setSelectedIndex(0);
+        combDep.setEnabled(false);
+        combBranch.setEnabled(false);
+        combSem.setEnabled(false);
+        btnAdd.setText("Add");
 
     }//GEN-LAST:event_btnAddActionPerformed
 
@@ -322,11 +345,31 @@ public class CreateSubject extends javax.swing.JDialog {
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-        if (inputTable.getSelectedRow() != -1) {
-            dataVector.remove(inputTable.getSelectedRow());
-            inputTable.tableChanged(null);
+        if (btnAdd.getText().equals("Add")) {
+            if (inputTable.getSelectedRow() != -1) {
+                dataVector.remove(inputTable.getSelectedRow());
+                inputTable.tableChanged(null);
+            }
+            if (dataVector.isEmpty()) {
+                combDep.setEnabled(true);
+                combBranch.setEnabled(true);
+                combSem.setEnabled(true);
+            }
         }
     }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void inputTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inputTableMouseClicked
+        if (dataVector != null) {
+            if (evt.getClickCount() == 2) {
+                SubjectDetail detail = (SubjectDetail) dataVector.elementAt(inputTable.getSelectedRow());
+                txtName.setText(detail.getName());
+                txtAlias.setText(detail.getAlias());
+                txtSubId.setText(detail.getSub_id());
+                combType.setSelectedItem(detail.getType());
+                btnAdd.setText("Modify");
+            }
+        }
+    }//GEN-LAST:event_inputTableMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -364,6 +407,7 @@ public class CreateSubject extends javax.swing.JDialog {
         txtSubId.setText("");
         dataVector.clear();
         inputTable.tableChanged(null);
+        btnAdd.setText("Add");
 //        combDep.getInputField().requestFocus();
     }
 

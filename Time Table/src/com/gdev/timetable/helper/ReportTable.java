@@ -81,7 +81,7 @@ public class ReportTable extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         table = new javax.swing.JTable();
 
-        setBorder(javax.swing.BorderFactory.createTitledBorder(null, org.openide.util.NbBundle.getMessage(ReportTable.class, "ReportTable.border.title_1"), javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 14), new java.awt.Color(0, 51, 153))); // NOI18N
+        setBorder(javax.swing.BorderFactory.createTitledBorder(null, org.openide.util.NbBundle.getMessage(ReportTable.class, "ReportTable.border.title_1"), javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 14), new java.awt.Color(0, 0, 0))); // NOI18N
 
         org.openide.awt.Mnemonics.setLocalizedText(jLabel1, org.openide.util.NbBundle.getMessage(ReportTable.class, "ReportTable.jLabel1.text_1")); // NOI18N
 
@@ -336,7 +336,7 @@ public class ReportTable extends javax.swing.JPanel {
 
         @Override
         public Object getValueAt(int nrow, int ncol) {
-            if (getreportListner().getcolumnClass(ncol) == Integer.class && ncol==0) {
+            if (getreportListner().getcolumnClass(ncol) == Integer.class && ncol == 0) {
                 return getDisplayRowNumberForTable(nrow) + 1;
             }
             return getreportListner().getValueAt(nrow, ncol);
@@ -453,12 +453,14 @@ public class ReportTable extends javax.swing.JPanel {
             @Override
             public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
                 final Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
-                if (isSelected) {
-                    c.setBackground(table.getSelectionBackground());
-                    c.setForeground(Color.WHITE);
-                } else {
-                    c.setBackground(row % 2 == 0 ? Utility.getDefault().getRowBgColor() : Color.WHITE);
-                    c.setForeground(Color.BLACK);
+                if (!Utility.getDefault().isDarkTheme()) {
+                    if (isSelected) {
+                        c.setBackground(table.getSelectionBackground());
+                        c.setForeground(Color.WHITE);
+                    } else {
+                        c.setBackground(row % 2 == 0 ? Utility.getDefault().getRowBgColor() : Color.WHITE);
+                        c.setForeground(Color.BLACK);
+                    }
                 }
                 return this;
             }
@@ -468,12 +470,14 @@ public class ReportTable extends javax.swing.JPanel {
             @Override
             public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
                 final Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
-                if (isSelected) {
-                    c.setBackground(table.getSelectionBackground());
-                    c.setForeground(Color.WHITE);
-                } else {
-                    c.setBackground(row % 2 == 0 ? Utility.getDefault().getRowBgColor() : Color.WHITE);
-                    c.setForeground(Color.BLACK);
+                if (!Utility.getDefault().isDarkTheme()) {
+                    if (isSelected) {
+                        c.setBackground(table.getSelectionBackground());
+                        c.setForeground(Color.WHITE);
+                    } else {
+                        c.setBackground(row % 2 == 0 ? Utility.getDefault().getRowBgColor() : Color.WHITE);
+                        c.setForeground(Color.BLACK);
+                    }
                 }
                 return this;
             }

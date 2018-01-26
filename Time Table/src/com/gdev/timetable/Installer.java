@@ -5,13 +5,17 @@
  */
 package com.gdev.timetable;
 
+import com.gdev.timetable.utility.FileUtility;
 import java.awt.Frame;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.prefs.Preferences;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 import org.openide.modules.ModuleInstall;
+import org.openide.util.Exceptions;
 import org.openide.windows.WindowManager;
 
 public class Installer extends ModuleInstall {
@@ -25,6 +29,20 @@ public class Installer extends ModuleInstall {
 
             @Override
             public void run() {
+                if (FileUtility.getDefault().getProperties("THEME") != null && FileUtility.getDefault().getProperties("THEME").equals("DARK")) {
+                    try {
+                        UIManager.setLookAndFeel("com.bulenkov.darcula.DarculaLaf");
+                    } catch (ClassNotFoundException ex) {
+                        Exceptions.printStackTrace(ex);
+                    } catch (InstantiationException ex) {
+                        Exceptions.printStackTrace(ex);
+                    } catch (IllegalAccessException ex) {
+                        Exceptions.printStackTrace(ex);
+                    } catch (UnsupportedLookAndFeelException ex) {
+                        Exceptions.printStackTrace(ex);
+                    }
+                    WindowManager.getDefault().updateUI();
+                }
                 LogInDialog.getDefault().setVisible(true);
                 parent = WindowManager.getDefault().getMainWindow();
                 parent.addWindowListener(new WindowAdapter() {
@@ -41,6 +59,7 @@ public class Installer extends ModuleInstall {
                                 DepartmentReportTopComponent component = new DepartmentReportTopComponent();
                                 component.open();
                                 component.requestActive();
+
                             }
                         });
                         parent.removeWindowListener(this);

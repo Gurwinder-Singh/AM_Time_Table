@@ -28,7 +28,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -36,8 +35,6 @@ import java.util.Vector;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Function;
 import java.util.function.Predicate;
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
 import java.util.stream.LongStream;
 
 /**
@@ -836,9 +833,10 @@ public class DbManager {
         Result r = new Result();
         try {
             con = getConnection();
-            query = "select * from TIME_TABLE where SUB_ALLOC_ID = ?";
+            query = "select * from TIME_TABLE where SUB_ALLOC_ID = ? or SUB_ALLOC_ID_SEC= ?";
             pst = con.prepareStatement(query);
             pst.setLong(1, detail.getId());
+            pst.setLong(2, detail.getId());
             rs = pst.executeQuery();
             if (rs.next()) {
                 con.close();
@@ -979,7 +977,7 @@ public class DbManager {
             pst.setLong(1, detail.getId());
             ResultSet rs = pst.executeQuery();
             if (rs.next()) {
-                //used configurations never updated
+                //used configurations never Deleted
                 con.close();
                 r.setMessage("Configuration used in Time Table can't be Deleted. \n Please clear Time table before Deleteing the config.");
                 return r;
@@ -1070,6 +1068,28 @@ public class DbManager {
 
     }
 
+    public Result deleteTimeTable(Vector<TimeTableDetail> data) {
+        Connection con = null;
+        PreparedStatement pst = null;
+        String query;
+        Result r = new Result();
+        try {
+            con = getConnection();
+            query = " delete from time_table where config_id = ?";
+            pst = con.prepareStatement(query);
+            for (int i = 0; i < data.size(); i++) {
+                TimeTableDetail detail = data.elementAt(i);
+                pst.setLong(1, detail.getConfig_id());
+                pst.execute();
+            }
+            r.setSuccess(true);
+            con.close();
+        } catch (Exception e) {
+            handelException(e, con);
+        }
+        return r;
+    }
+
     public Result setTimeTable(Vector<TimeTableDetail> timeTableDetail) {
         Result r = new Result();
         Connection con = null;
@@ -1077,10 +1097,10 @@ public class DbManager {
         String query, deleteQuery;
         try {
             con = getConnection();
-           List<Long> l=  timeTableDetail.stream().filter(distinctByKey(d -> d.getConfig_id())).flatMapToLong(x-> LongStream.of(x.getConfig_id()))
-                   .collect(ArrayList::new, ArrayList::add, ArrayList::addAll);
-           
-            deleteQuery = "delete from TIME_TABLE where config_id in  " +l;
+            List<Long> l = timeTableDetail.stream().filter(distinctByKey(d -> d.getConfig_id())).flatMapToLong(x -> LongStream.of(x.getConfig_id()))
+                    .collect(ArrayList::new, ArrayList::add, ArrayList::addAll);
+
+            deleteQuery = "delete from TIME_TABLE where config_id in  " + l;
             deleteQuery = deleteQuery.replace("[", "(");
             deleteQuery = deleteQuery.replace("]", ")");
             pst1 = con.prepareStatement(deleteQuery);
@@ -1107,11 +1127,11 @@ public class DbManager {
         return r;
     }
 
-    public  <T> Predicate<T> distinctByKey(Function<? super T, Object> keyExtractor)
-    {
+    public <T> Predicate<T> distinctByKey(Function<? super T, Object> keyExtractor) {
         Map<Object, Boolean> map = new ConcurrentHashMap<>();
         return t -> map.putIfAbsent(keyExtractor.apply(t), Boolean.TRUE) == null;
     }
+
     public Vector getTimeTable() {
         Connection con = null;
         PreparedStatement pst = null;
@@ -1164,6 +1184,37 @@ public class DbManager {
                 detail.setLec(rs.getLong("lec"));
                 detail.setSub_alloc_id(rs.getLong("SUB_ALLOC_ID"));
                 detail.setSub_alloc_id2(rs.getLong("SUB_ALLOC_ID_SEC"));
+                v.add(detail);
+            }
+
+            con.close();
+        } catch (Exception e) {
+            handelException(e, con);
+        }
+        return v;
+    }
+
+    public Vector getTeacherAllocatedDetail() {
+        Connection con = null;
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+        Vector v = new Vector();
+        String query;
+        try {
+            con = getConnection();
+            query = "select t.*, s1.teach_id as teach_id1, s2.teach_id as teach_id2 from time_table t "
+                    + " inner join sub_alloc s1 on (s1.id = t.sub_alloc_id) "
+                    + " left join sub_alloc s2 on (s2.id = t.sub_alloc_id_sec) ";
+            pst = con.prepareStatement(query);
+            rs = pst.executeQuery();
+            while (rs.next()) {
+                TimeTableDetail detail = new TimeTableDetail();
+                detail.setId(rs.getLong("id"));
+                detail.setConfig_id(rs.getLong("config_id"));
+                detail.setDay(rs.getLong("day"));
+                detail.setLec(rs.getLong("lec"));
+                detail.setSub_alloc_id(rs.getLong("teach_id1"));
+                detail.setSub_alloc_id2(rs.getLong("teach_id2"));
                 v.add(detail);
             }
 

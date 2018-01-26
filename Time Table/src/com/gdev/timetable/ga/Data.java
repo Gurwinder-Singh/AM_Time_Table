@@ -7,6 +7,7 @@ package com.gdev.timetable.ga;
 
 import com.gdev.timetable.model.ConfigDetail;
 import com.gdev.timetable.model.SubjectAllocation;
+import com.gdev.timetable.model.TimeTableDetail;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Vector;
@@ -58,10 +59,10 @@ public class Data {
 
     }
 
-    public void setConfig(Vector<ConfigDetail> config){
+    public void setConfig(Vector<ConfigDetail> config) {
         _config = config;
     }
-    
+
     public void setAllocation(Vector<SubjectAllocation> alloc) {
         allocations = new HashMap<>();
         alloc.forEach(x -> {
@@ -81,6 +82,10 @@ public class Data {
         }).flatMapToLong(c -> {
             return LongStream.of(c.getId());
         }).findFirst().orElse(0);
+    }
+
+    public boolean isConfigAval(long config_id) {
+        return _config.stream().anyMatch(x -> x.getId() == config_id);
     }
 
     public ArrayList<SubjectAllocation> getAllocation(long config_id) {
@@ -131,6 +136,17 @@ public class Data {
         }
         lec.add(lecture);
         teachers.put(generateKey(teacher_id, day), lec);
+    }
+
+    public void loadTeacherAval(Vector<TimeTableDetail> teacher) {
+        teacher.forEach(t -> {
+            if (!isConfigAval(t.getConfig_id())) {
+                addTeacherAval(t.getSub_alloc_id(), (int) t.getDay(), (int) t.getLec());
+                if (t.getSub_alloc_id2() > 0) {
+                    addTeacherAval(t.getSub_alloc_id2(), (int) t.getDay(), (int) t.getLec());
+                }
+            }
+        });
     }
 
 }

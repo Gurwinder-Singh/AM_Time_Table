@@ -6,7 +6,9 @@
 package com.gdev.timetable.reports;
 
 import com.gdev.timetable.db.DbManager;
+import com.gdev.timetable.helper.MessageDisplay;
 import com.gdev.timetable.interfaces.ReportTableImplementPanelClass;
+import com.gdev.timetable.model.Result;
 import com.gdev.timetable.model.TimeTableDetail;
 import com.gdev.timetable.utility.Utility;
 import java.awt.event.ActionEvent;
@@ -84,17 +86,17 @@ public final class TimeTableReportTopComponent extends TopComponent implements R
                     }
 
                 } else if (e.getActionCommand().equalsIgnoreCase("Delete")) {
-//                    if (reportTable1.getSelectedRow() > -1) {
-//                        if (MessageDisplay.showOptionDialog(null, "Do You Want to Delete This?", "Sure") == MessageDisplay.YES_OPTION) {
-//                            IdName in = (IdName) reportTable1.getSelectedModelData().elementAt(0);
-//                            Result r = DbManager.getDefault().deleteDepartment(in);
-//                            if (r.isSuccess()) {
-//                                MessageDisplay.showSuccessDialog(null, "Department Deleted Succesfully", "Success");
-//                            } else {
-//                                MessageDisplay.showErrorDialog(null, r.getMessage());
-//                            }
-//                        }
-//                    }
+                    if (reportTable1.getSelectedRow() > -1) {
+                        if (MessageDisplay.showOptionDialog(null, "Do You Want to Delete This?", "Sure") == MessageDisplay.YES_OPTION) {
+                            Vector<TimeTableDetail> in =  reportTable1.getSelectedModelData();
+                            Result r = DbManager.getDefault().deleteTimeTable(in);
+                            if (r.isSuccess()) {
+                                MessageDisplay.showSuccessDialog(null, "Time Table Deleted Succesfully", "Success");
+                            } else {
+                                MessageDisplay.showErrorDialog(null, r.getMessage());
+                            }
+                        }
+                    }
                 }
             }
         }

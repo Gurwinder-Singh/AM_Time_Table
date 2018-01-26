@@ -42,7 +42,7 @@ public class FileUtility {
         return tempProp;
     }
 
-    private File loadRegFile() {
+    private File loadExtraFile() {
         File dir = new File(System.getProperty("netbeans.user") + System.getProperty("file.separator") + "extra");
         if (!dir.exists()) {
             dir.mkdir();
@@ -52,7 +52,7 @@ public class FileUtility {
     }
 
     private Properties loadFileProperties() {
-        Properties myProp = loadProperties(loadRegFile());
+        Properties myProp = loadProperties(loadExtraFile());
         return myProp;
     }
 
@@ -74,7 +74,7 @@ public class FileUtility {
         java.io.OutputStream propsFile;
         Properties props = this.loadFileProperties();
         try {
-            propsFile = new FileOutputStream(loadRegFile());
+            propsFile = new FileOutputStream(loadExtraFile());
             props.setProperty(key, value);
             props.save(propsFile, "");
             propsFile.close();

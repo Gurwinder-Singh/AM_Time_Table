@@ -29,15 +29,16 @@ public class SerialNumberClassCellRenderer extends DefaultTableCellRenderer {
             int column) {
 
         Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+        if (!Utility.getDefault().isDarkTheme()) {
+            if (isSelected) {
+                c.setBackground(table.getSelectionBackground());
+                c.setForeground(Color.white);
+            } else {
 
-        if (isSelected) {
-            c.setBackground(table.getSelectionBackground());
-            c.setForeground(Color.white);
-        } else {
-
-            c.setBackground(Utility.getColor("FFFFCC"));
-            //c.getBackground()
-            c.setForeground(c.getBackground().getGreen() < 103 ? Color.white : Color.black);
+                c.setBackground(Utility.getColor("FFFFCC"));
+                //c.getBackground()
+                c.setForeground(c.getBackground().getGreen() < 103 ? Color.white : Color.black);
+            }
         }
         this.setHorizontalAlignment(SwingUtilities.RIGHT);
 

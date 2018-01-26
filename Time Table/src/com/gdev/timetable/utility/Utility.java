@@ -103,7 +103,7 @@ public class Utility {
                 javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
                 javax.swing.border.TitledBorder.DEFAULT_POSITION,
                 ((TitledBorder) panel.getBorder()).getTitleFont(),
-                ((TitledBorder) panel.getBorder()).getTitleColor());
+               (isDarkTheme()?new Color(0,187,187,187) :((TitledBorder) panel.getBorder()).getTitleColor()));
     }
 
     public static Color getColor(String str) {
@@ -119,6 +119,10 @@ public class Utility {
 
     public Color getRowBgColor(){
         return new Color(0, 100, 255, 15);
+    }
+    
+    public static boolean isDarkTheme(){
+        return FileUtility.getDefault().getProperties("THEME") != null && FileUtility.getDefault().getProperties("THEME").equals("DARK");
     }
     public static void setPopupMenu(String data, JPopupMenu popupMenu, ActionListener aThis) {
         if (data != null) {

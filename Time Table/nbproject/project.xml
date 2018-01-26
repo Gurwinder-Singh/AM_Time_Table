@@ -83,6 +83,10 @@
                 <runtime-relative-path>ext/com.lowagie.text-2.1.7.jar</runtime-relative-path>
                 <binary-origin>release/modules/ext/com.lowagie.text-2.1.7.jar</binary-origin>
             </class-path-extension>
+            <class-path-extension>
+                <runtime-relative-path>ext/darcula.jar</runtime-relative-path>
+                <binary-origin>release/modules/ext/darcula.jar</binary-origin>
+            </class-path-extension>
         </data>
     </configuration>
 </project>
